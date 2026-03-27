@@ -21,20 +21,22 @@ export default function Home() {
     <>
       <Navbar />
       <ScrollToTop />
-      <Hero />
-      <LogoBanner />
-      <Stats />
-      <HowItWorks />
-      <Features />
-      <InteractiveDemo />
-      <Benefits />
-      <AppPreview />
-      <LoyaltyPreview />
-      <Comparison />
-      <ROICalculator />
-      <Pricing />
-      <FAQ />
-      <CTAFinal />
+      <main>
+        <Hero />
+        <LogoBanner />
+        <Stats />
+        <HowItWorks />
+        <Features />
+        <InteractiveDemo />
+        <Benefits />
+        <AppPreview />
+        <LoyaltyPreview />
+        <Comparison />
+        <ROICalculator />
+        <Pricing />
+        <FAQ />
+        <CTAFinal />
+      </main>
       <Footer />
     </>
   );
