@@ -51,6 +51,12 @@ export default function Hero() {
         }}
       />
 
+      {/* Bottom fade to blend into next section */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-32 z-[1] pointer-events-none"
+        style={{ background: "linear-gradient(to bottom, transparent, var(--bg-main))" }}
+      />
+
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="flex flex-col gap-7">
