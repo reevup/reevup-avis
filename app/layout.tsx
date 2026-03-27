@@ -156,7 +156,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {/* Prevent flash of wrong theme + show loading screen instantly */}
+        {/* Prevent flash of wrong theme + scroll to top on load */}
         <script dangerouslySetInnerHTML={{ __html: `
           (function() {
             try {
@@ -165,6 +165,8 @@ export default function RootLayout({
                 document.documentElement.classList.add('dark');
               }
             } catch(e) {}
+            if (history.scrollRestoration) { history.scrollRestoration = 'manual'; }
+            window.scrollTo(0, 0);
           })();
         `}} />
         <style dangerouslySetInnerHTML={{ __html: `
