@@ -56,11 +56,14 @@ export default function Navbar() {
           </a>
         </div>
 
-        <button className="lg:hidden flex flex-col gap-1.5 p-2" onClick={() => setOpen(!open)} aria-label="Menu">
-          <span className={`block w-6 h-0.5 bg-gray-900 dark:bg-white transition-all duration-300 ${open ? "rotate-45 translate-y-2" : ""}`} />
-          <span className={`block w-6 h-0.5 bg-gray-900 dark:bg-white transition-all duration-300 ${open ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-0.5 bg-gray-900 dark:bg-white transition-all duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`} />
-        </button>
+        <div className="lg:hidden flex items-center gap-3">
+          <ThemeToggle />
+          <button className="flex flex-col gap-1.5 p-2" onClick={() => setOpen(!open)} aria-label="Menu">
+            <span className={`block w-6 h-0.5 bg-gray-900 dark:bg-white transition-all duration-300 ${open ? "rotate-45 translate-y-2" : ""}`} />
+            <span className={`block w-6 h-0.5 bg-gray-900 dark:bg-white transition-all duration-300 ${open ? "opacity-0" : ""}`} />
+            <span className={`block w-6 h-0.5 bg-gray-900 dark:bg-white transition-all duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`} />
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
