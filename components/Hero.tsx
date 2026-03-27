@@ -30,33 +30,6 @@ export default function Hero() {
 
   return (
     <section className="relative flex items-center pt-24 pb-10 lg:pb-16 overflow-hidden">
-      {/* Blobs */}
-      <div
-        className="blob-animate absolute -bottom-40 -left-40 w-[300px] h-[300px] md:w-[600px] md:h-[600px] rounded-full pointer-events-none"
-        style={{
-          background: isDark
-            ? "radial-gradient(circle, rgba(81,25,126,0.25) 0%, transparent 70%)"
-            : "radial-gradient(circle, rgba(81,25,126,0.15) 0%, transparent 70%)",
-          filter: "blur(60px)",
-        }}
-      />
-      <div
-        className="blob-animate absolute -top-20 -right-40 w-[250px] h-[250px] md:w-[500px] md:h-[500px] rounded-full pointer-events-none"
-        style={{
-          background: isDark
-            ? "radial-gradient(circle, rgba(147,113,209,0.2) 0%, transparent 70%)"
-            : "radial-gradient(circle, rgba(147,113,209,0.12) 0%, transparent 70%)",
-          filter: "blur(60px)",
-          animationDelay: "4s",
-        }}
-      />
-
-      {/* Bottom fade to blend into next section */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-32 z-[1] pointer-events-none"
-        style={{ background: "linear-gradient(to bottom, transparent, var(--bg-main))" }}
-      />
-
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="flex flex-col gap-7">
