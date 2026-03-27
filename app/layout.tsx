@@ -49,10 +49,10 @@ export const metadata: Metadata = {
     canonical: "https://reevup-avis.fr",
   },
   other: {
-    "geo.region": "FR",
-    "geo.placename": "France",
-    "geo.position": "46.603354;1.888334",
-    "ICBM": "46.603354, 1.888334",
+    "geo.region": "FR-91",
+    "geo.placename": "Ris-Orangis, France",
+    "geo.position": "48.6536;2.4153",
+    "ICBM": "48.6536, 2.4153",
   },
 };
 
