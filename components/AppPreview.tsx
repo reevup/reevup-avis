@@ -65,7 +65,7 @@ export default function AppPreview() {
   }, [tab]);
 
   return (
-    <section className="py-16 pb-20" style={{ background: "linear-gradient(to bottom, var(--bg-purple-section), var(--bg-main) 15%)" }}>
+    <section className="py-16 pb-20 bg-white dark:bg-[#1a1a1a]">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
