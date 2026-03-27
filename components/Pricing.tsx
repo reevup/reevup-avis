@@ -145,7 +145,7 @@ export default function Pricing() {
   const isDark = theme === "dark";
 
   return (
-    <section id="tarifs" className="py-16 bg-white dark:bg-[#1a1a1a]">
+    <section id="tarifs" className="py-16" style={{ background: "linear-gradient(to bottom, var(--bg-alt), var(--bg-main) 15%)" }}>
       <div className="max-w-7xl mx-auto px-6">
         <motion.h2
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}

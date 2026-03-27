@@ -50,7 +50,7 @@ const item = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, trans
 
 export default function Features() {
   return (
-    <section id="fonctionnalites" className="py-16 bg-white dark:bg-[#1a1a1a]">
+    <section id="fonctionnalites" className="py-16" style={{ background: "linear-gradient(to bottom, var(--bg-purple-section), var(--bg-main) 20%)" }}>
       <div className="max-w-7xl mx-auto px-6">
         <motion.h2
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
