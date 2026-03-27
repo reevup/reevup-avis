@@ -63,13 +63,13 @@ export default function ROICalculator() {
                 </div>
               </div>
               <input
-                type="range" min={1} max={4.5} step={0.1} value={currentNote}
+                type="range" min={1} max={4.9} step={0.1} value={currentNote}
                 onChange={(e) => setCurrentNote(Number(e.target.value))}
                 className="w-full h-2 rounded-full appearance-none cursor-pointer"
-                style={{ background: `linear-gradient(to right, #51197e ${((currentNote - 1) / 3.5) * 100}%, #E5E7EB ${((currentNote - 1) / 3.5) * 100}%)` }}
+                style={{ background: `linear-gradient(to right, #51197e ${((currentNote - 1) / 3.9) * 100}%, #E5E7EB ${((currentNote - 1) / 3.9) * 100}%)` }}
               />
               <div className="flex justify-between text-xs text-gray-400 mt-1">
-                <span>1.0</span><span>4.5</span>
+                <span>1.0</span><span>4.9</span>
               </div>
             </div>
           </div>
