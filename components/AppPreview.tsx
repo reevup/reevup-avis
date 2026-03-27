@@ -62,7 +62,7 @@ export default function AppPreview() {
   }, [tab]);
 
   return (
-    <section className="py-16 bg-white overflow-hidden">
+    <section className="py-16 pb-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
@@ -103,9 +103,9 @@ export default function AppPreview() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="relative max-w-5xl mx-auto overflow-hidden"
+              className="relative max-w-5xl mx-auto"
             >
-              <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden">
+              <div className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
                 {/* Browser bar */}
                 <div className="bg-gray-50 border-b border-gray-200 px-4 py-3 flex items-center gap-2">
                   <div className="flex gap-1.5">
