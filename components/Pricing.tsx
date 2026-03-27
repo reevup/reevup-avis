@@ -62,9 +62,10 @@ function PlanCard({ p, annual }: { p: typeof plans[0]; annual: boolean }) {
 
   return (
     <motion.div variants={item}
-      className={`rounded-2xl p-6 sm:p-8 flex flex-col relative bg-white dark:bg-[#2a2a2a] border-2 transition-all ${
+      className={`rounded-2xl p-6 sm:p-8 flex flex-col relative border-2 ${
         p.popular ? "border-[#51197e] shadow-xl shadow-[#51197e]/10" : "border-gray-100 dark:border-[#3a3a3a] shadow-sm hover:shadow-lg"
       }`}
+      style={{ background: isDark ? "#2a2a2a" : "#ffffff" }}
     >
       {p.popular && (
         <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-5 py-1.5 rounded-full text-white text-xs font-bold" style={{ background: "#51197e" }}>
