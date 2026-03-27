@@ -51,12 +51,12 @@ const logos = [
 
 export default function LogoBanner() {
   return (
-    <section className="py-10 bg-white border-b border-gray-50">
+    <section className="py-10" style={{ background: "linear-gradient(to bottom, var(--bg-main), var(--bg-alt))" }}>
       <div className="max-w-5xl mx-auto px-6">
         <motion.p
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
           viewport={{ once: true }} transition={{ duration: 0.5 }}
-          className="text-center text-xs font-semibold text-gray-400 uppercase tracking-widest mb-6"
+          className="text-center text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-6"
         >
           Compatible et intégré avec
         </motion.p>
@@ -68,7 +68,7 @@ export default function LogoBanner() {
           {logos.map((l) => (
             <div key={l.name} className="flex items-center gap-2.5 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
               {l.icon}
-              <span className="text-sm font-semibold text-gray-500">{l.name}</span>
+              <span className="text-sm font-semibold text-gray-500 dark:text-gray-400">{l.name}</span>
             </div>
           ))}
         </motion.div>

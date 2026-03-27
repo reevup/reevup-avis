@@ -40,7 +40,7 @@ export default function CTAFinal() {
           initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}
           href="#tarifs"
-          className="inline-flex items-center gap-2 px-10 py-4 rounded-full bg-white text-[#51197e] font-bold text-lg hover:bg-gray-50 transition-all shadow-xl group"
+          className="inline-flex items-center gap-2 px-10 py-4 rounded-full bg-white text-[#51197e] dark:text-[#c4b0e0] font-bold text-lg hover:bg-gray-50 dark:hover:bg-gray-100 transition-all shadow-xl group"
         >
           Démarrer l&apos;essai gratuit
           <span className="group-hover:translate-x-1 transition-transform">→</span>

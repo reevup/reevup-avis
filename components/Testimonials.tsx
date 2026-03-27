@@ -107,7 +107,7 @@ export default function Testimonials() {
 
             {/* Steps */}
             <div className="p-6 md:p-8">
-              <p className="text-xs font-bold text-[#51197e] uppercase tracking-widest mb-6">Ce qui se passe ensuite</p>
+              <p className="text-xs font-bold text-[#51197e] dark:text-[#c4b0e0] uppercase tracking-widest mb-6">Ce qui se passe ensuite</p>
               <div className="flex flex-col gap-5">
                 {scenario.steps.map((step, i) => (
                   <motion.div
@@ -118,7 +118,7 @@ export default function Testimonials() {
                     className="flex items-start gap-4"
                   >
                     <div className="flex items-center gap-3 flex-shrink-0">
-                      <span className="w-8 h-8 rounded-full bg-[#EDE5F7] flex items-center justify-center text-sm font-bold text-[#51197e]">
+                      <span className="w-8 h-8 rounded-full bg-[#EDE5F7] flex items-center justify-center text-sm font-bold text-[#51197e] dark:text-[#c4b0e0]">
                         {i + 1}
                       </span>
                       <span className="text-xl">{step.icon}</span>

@@ -113,10 +113,10 @@ export default function AssistantPreview() {
             viewport={{ once: true }} transition={{ duration: 0.5 }}
             className="order-1 lg:order-2"
           >
-            <span className="text-xs font-bold text-[#51197e] uppercase tracking-widest mb-4 block">Assistant IA</span>
+            <span className="text-xs font-bold text-[#51197e] dark:text-[#c4b0e0] uppercase tracking-widest mb-4 block">Assistant IA</span>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-6">
               Un assistant qui répond{" "}
-              <span className="text-[#51197e]">comme vous le feriez</span>
+              <span className="text-[#51197e] dark:text-[#c4b0e0]">comme vous le feriez</span>
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed mb-8">
               Choisissez la personnalité, le ton et les couleurs de votre assistant. Il apprend le contexte de votre établissement et rédige des réponses personnalisées à chaque avis.

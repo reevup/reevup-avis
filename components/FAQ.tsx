@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "./ThemeProvider";
 
 const faqs = [
   { q: "Est-ce légal de filtrer les avis ?", a: "Oui, absolument. Vous ne supprimez aucun avis. Vous proposez simplement un formulaire de contact aux clients mécontents. Les clients satisfaits sont libres de publier (ou non) un avis sur Google." },
@@ -13,12 +14,14 @@ const faqs = [
 
 function FAQItem({ faq }: { faq: (typeof faqs)[0] }) {
   const [open, setOpen] = useState(false);
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
   return (
-    <div className="border-b border-gray-100 last:border-0">
+    <div className="border-b border-gray-100 dark:border-[#3a3a3a] last:border-0">
       <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between py-6 text-left group">
-        <span className="font-semibold text-gray-900 pr-4 group-hover:text-[#51197e] transition-colors">{faq.q}</span>
+        <span className="font-semibold text-gray-900 dark:text-white pr-4 group-hover:text-[#51197e] dark:text-[#c4b0e0] transition-colors">{faq.q}</span>
         <span className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all text-sm font-bold"
-          style={{ background: open ? "#51197e" : "#EDE5F7", color: open ? "#fff" : "#51197e", transform: open ? "rotate(45deg)" : "rotate(0)" }}>
+          style={{ background: open ? "#51197e" : (isDark ? "#2a1d3a" : "#EDE5F7"), color: open ? "#fff" : (isDark ? "#c4b0e0" : "#51197e"), transform: open ? "rotate(45deg)" : "rotate(0)" }}>
           +
         </span>
       </button>
@@ -26,7 +29,7 @@ function FAQItem({ faq }: { faq: (typeof faqs)[0] }) {
         {open && (
           <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden">
-            <p className="text-gray-600 leading-relaxed pb-6">{faq.a}</p>
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed pb-6">{faq.a}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -36,19 +39,19 @@ function FAQItem({ faq }: { faq: (typeof faqs)[0] }) {
 
 export default function FAQ() {
   return (
-    <section id="faq" className="py-16 bg-white">
+    <section id="faq" className="py-16 bg-white dark:bg-[#1a1a1a]">
       <div className="max-w-3xl mx-auto px-6">
         <motion.h2
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-14 text-gray-900"
+          className="text-3xl md:text-4xl font-bold text-center mb-14 text-gray-900 dark:text-white"
         >
           Questions fréquentes
         </motion.h2>
         <motion.div
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
-          className="bg-white rounded-2xl border border-gray-100 shadow-lg p-6 md:p-10"
+          className="bg-white dark:bg-[#2a2a2a] rounded-2xl border border-gray-100 dark:border-[#3a3a3a] shadow-lg p-6 md:p-10"
         >
           {faqs.map((faq) => <FAQItem key={faq.q} faq={faq} />)}
         </motion.div>

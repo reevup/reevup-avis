@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-gray-900">
+    <footer className="bg-gray-900 dark:bg-[#111111]">
       <div className="max-w-7xl mx-auto px-6 py-14">
         {/* Top: Logo + Links */}
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 mb-12">
@@ -49,7 +49,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="border-t border-gray-800 dark:border-[#333333] pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-gray-500">© 2026 Reevup&apos;Avis. Tous droits réservés.</p>
           <a href="#tarifs" className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-white text-xs font-semibold hover:bg-[#6B21A8] transition-all" style={{ background: "#51197e" }}>
             Essai gratuit 14 jours →

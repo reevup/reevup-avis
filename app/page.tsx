@@ -15,10 +15,12 @@ import FAQ from "@/components/FAQ";
 import CTAFinal from "@/components/CTAFinal";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import LoadingScreen from "@/components/LoadingScreen";
 
 export default function Home() {
   return (
     <>
+      <LoadingScreen />
       <Navbar />
       <ScrollToTop />
       <main>

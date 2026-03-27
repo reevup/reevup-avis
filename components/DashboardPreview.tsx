@@ -21,7 +21,7 @@ export default function DashboardPreview() {
           viewport={{ once: true }} transition={{ duration: 0.5 }}
           className="text-center mb-14"
         >
-          <span className="text-xs font-bold text-[#51197e] uppercase tracking-widest mb-4 block">Tableau de bord</span>
+          <span className="text-xs font-bold text-[#51197e] dark:text-[#c4b0e0] uppercase tracking-widest mb-4 block">Tableau de bord</span>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Suivez vos résultats en temps réel
           </h2>
@@ -66,7 +66,7 @@ export default function DashboardPreview() {
                   Restaurant Le Petit Bistrot
                 </div>
                 <nav className="flex flex-col gap-1 text-xs">
-                  <div className="px-3 py-2 rounded-lg font-semibold text-[#51197e]" style={{ background: "#EDE5F7" }}>Tableau de bord</div>
+                  <div className="px-3 py-2 rounded-lg font-semibold text-[#51197e] dark:text-[#c4b0e0]" style={{ background: "#EDE5F7" }}>Tableau de bord</div>
                   <div className="px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100">Ma signature</div>
                   <div className="px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100">Mon QR Code</div>
                   <div className="px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100">Mon assistant IA</div>
