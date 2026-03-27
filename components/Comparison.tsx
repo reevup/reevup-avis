@@ -21,7 +21,7 @@ export default function Comparison() {
   const { theme } = useTheme();
 
   return (
-    <section className="py-16" style={{ background: theme === "dark" ? "#1e1525" : "#F3EEFA" }}>
+    <section className="py-16" style={{ background: theme === "dark" ? "linear-gradient(to bottom, #222222, #1e1525 20%)" : "linear-gradient(to bottom, #F9F7FC, #F3EEFA 20%)" }}>
       <div className="max-w-6xl mx-auto px-6">
         <motion.h2
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}

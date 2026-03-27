@@ -61,7 +61,7 @@ export default function Benefits() {
   const { theme } = useTheme();
 
   return (
-    <section className="py-16" style={{ background: theme === "dark" ? "#1e1525" : "#F3EEFA" }}>
+    <section className="py-16" style={{ background: theme === "dark" ? "linear-gradient(to bottom, #1a1a1a, #1e1525 20%)" : "linear-gradient(to bottom, #ffffff, #F3EEFA 20%)" }}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-16 items-center">
           {/* Left */}

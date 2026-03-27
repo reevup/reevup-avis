@@ -51,7 +51,7 @@ const logos = [
 
 export default function LogoBanner() {
   return (
-    <section className="py-10" style={{ background: "linear-gradient(to bottom, var(--bg-main), var(--bg-alt))" }}>
+    <section className="py-10 bg-white dark:bg-[#1a1a1a]">
       <div className="max-w-5xl mx-auto px-6">
         <motion.p
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
