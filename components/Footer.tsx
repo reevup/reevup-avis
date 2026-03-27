@@ -10,7 +10,7 @@ export default function Footer() {
                 <span className="font-bold text-white text-base" style={{ fontFamily: "'Neue Machina', sans-serif" }}>R</span>
               </div>
               <span className="font-bold text-white text-lg" style={{ fontFamily: "'Neue Machina', sans-serif" }}>
-                Reevup<span className="text-[#9371d1]">*</span>
+                Reevup&apos;Avis<span className="text-[#9371d1]">*</span>
               </span>
             </div>
             <p className="text-sm text-gray-400 leading-relaxed mb-4">La solution pour booster vos avis Google automatiquement.</p>
@@ -44,7 +44,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-gray-800 pt-6 text-center">
-          <p className="text-xs text-gray-500">© 2025 Reevup&apos;avis. Tous droits réservés.</p>
+          <p className="text-xs text-gray-500">© 2025 Reevup&apos;Avis. Tous droits réservés.</p>
         </div>
       </div>
     </footer>

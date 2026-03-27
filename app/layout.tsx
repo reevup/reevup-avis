@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Reevup'avis | Boostez vos avis Google automatiquement",
+  title: "Reevup'Avis | Boostez vos avis Google automatiquement",
   description:
-    "Reevup'avis redirige vos clients satisfaits vers Google, intercepte les avis négatifs et répond automatiquement via IA. Essai gratuit 14 jours.",
+    "Reevup'Avis redirige vos clients satisfaits vers Google, intercepte les avis négatifs et répond automatiquement via IA. Essai gratuit 14 jours.",
   keywords: [
     "avis Google",
     "gestion avis Google",

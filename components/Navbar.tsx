@@ -33,7 +33,7 @@ export default function Navbar() {
             <span className="font-bold text-white text-base" style={{ fontFamily: "'Neue Machina', sans-serif" }}>R</span>
           </div>
           <span className="font-bold text-gray-900 text-lg" style={{ fontFamily: "'Neue Machina', sans-serif" }}>
-            Reevup<span className="text-[#51197e]">*</span>
+            Reevup&apos;Avis<span className="text-[#51197e]">*</span>
           </span>
         </a>
 

@@ -11,7 +11,7 @@ const scenarios = [
     stars: 2,
     review: "Service très lent, on a attendu 45 minutes pour un plat. Déçu.",
     steps: [
-      { icon: "🛡️", label: "Reevup'avis intercepte", desc: "L'avis négatif ne sera jamais publié sur Google." },
+      { icon: "🛡️", label: "Reevup'Avis intercepte", desc: "L'avis négatif ne sera jamais publié sur Google." },
       { icon: "📩", label: "Formulaire privé envoyé", desc: "Le client remplit un formulaire de contact envoyé directement au gérant." },
       { icon: "🤝", label: "Vous réglez le problème", desc: "Vous contactez le client, proposez un geste commercial. Il revient satisfait." },
     ],
@@ -25,7 +25,7 @@ const scenarios = [
     stars: 5,
     review: "Excellent repas ! Le serveur était aux petits soins. Je recommande !",
     steps: [
-      { icon: "⭐", label: "Reevup'avis détecte la satisfaction", desc: "Note de 4 ou 5 étoiles = client satisfait." },
+      { icon: "⭐", label: "Reevup'Avis détecte la satisfaction", desc: "Note de 4 ou 5 étoiles = client satisfait." },
       { icon: "🔗", label: "Redirection Google", desc: "Le client est redirigé vers votre fiche Google pour publier son avis." },
       { icon: "🤖", label: "L'IA répond automatiquement", desc: "Une réponse personnalisée et professionnelle est publiée en votre nom." },
     ],
@@ -46,7 +46,7 @@ export default function Testimonials() {
           viewport={{ once: true }} transition={{ duration: 0.5 }}
           className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900"
         >
-          Voyez Reevup&apos;avis en action
+          Voyez Reevup&apos;Avis en action
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
