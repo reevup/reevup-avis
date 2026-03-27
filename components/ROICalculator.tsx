@@ -25,7 +25,7 @@ export default function ROICalculator() {
             Calculez votre retour sur investissement
           </h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Estimez l&apos;impact de Reevup&apos;avis sur votre établissement en quelques secondes.
+            Estimez l&apos;impact de Reevup&apos;Avis sur votre établissement en quelques secondes.
           </p>
         </motion.div>
 
@@ -77,7 +77,7 @@ export default function ROICalculator() {
           {/* Results */}
           <div className="bg-white rounded-2xl p-5 sm:p-8 shadow-lg border border-gray-100 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#51197e] to-[#7C3AED]" />
-            <h3 className="font-bold text-gray-900 text-lg mb-6">Résultats estimés avec Reevup&apos;avis</h3>
+            <h3 className="font-bold text-gray-900 text-lg mb-6">Résultats estimés avec Reevup&apos;Avis</h3>
 
             <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-6">
               <div className="bg-[#F3EAFA] rounded-xl p-3 sm:p-4 text-center">

@@ -25,7 +25,7 @@ export default function Comparison() {
           viewport={{ once: true }} transition={{ duration: 0.5 }}
           className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900"
         >
-          Avant / Après Reevup&apos;avis
+          Avant / Après Reevup&apos;Avis
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
@@ -45,7 +45,7 @@ export default function Comparison() {
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-400 to-red-300" />
             <div className="flex items-center gap-3 mb-8">
               <span className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center text-lg">😰</span>
-              <h3 className="text-xl font-bold text-gray-900">Sans Reevup&apos;avis</h3>
+              <h3 className="text-xl font-bold text-gray-900">Sans Reevup&apos;Avis</h3>
             </div>
             <div className="flex flex-col gap-5">
               {withoutItems.map((item, i) => (
@@ -71,7 +71,7 @@ export default function Comparison() {
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#51197e] to-[#7C3AED]" />
             <div className="flex items-center gap-3 mb-8">
               <span className="w-10 h-10 rounded-full flex items-center justify-center text-lg" style={{ background: "#EDE5F7" }}>🚀</span>
-              <h3 className="text-xl font-bold text-gray-900">Avec Reevup&apos;avis</h3>
+              <h3 className="text-xl font-bold text-gray-900">Avec Reevup&apos;Avis</h3>
             </div>
             <div className="flex flex-col gap-5">
               {withItems.map((item, i) => (

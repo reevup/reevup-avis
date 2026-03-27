@@ -91,8 +91,8 @@ export default function InteractiveDemo() {
                 isPositive ? "bg-gradient-to-r from-[#51197e] to-[#7C3AED]" : "bg-gradient-to-r from-red-500 to-red-400"
               }`}>
                 {isPositive
-                  ? "⭐ Reevup'avis redirige ce client vers Google"
-                  : "🛡️ Reevup'avis protège votre note Google"
+                  ? "⭐ Reevup'Avis redirige ce client vers Google"
+                  : "🛡️ Reevup'Avis protège votre note Google"
                 }
               </div>
 

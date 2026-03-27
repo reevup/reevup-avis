@@ -53,7 +53,7 @@ export default function Hero() {
               custom={2} variants={fadeUp} initial="hidden" animate="visible"
               className="text-lg text-gray-600 leading-relaxed max-w-lg"
             >
-              Reevup&apos;avis redirige vos clients satisfaits vers Google,
+              Reevup&apos;Avis redirige vos clients satisfaits vers Google,
               intercepte les avis négatifs, et laisse l&apos;IA répondre à votre
               place, automatiquement.
             </motion.p>

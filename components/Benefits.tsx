@@ -43,7 +43,7 @@ const benefits = [
       </svg>
     ),
     title: "Arrêtez de vous épuiser",
-    desc: "Reevup'avis s'occupe de tout : collecte, filtrage, réponse IA. Concentrez-vous sur votre coeur de métier.",
+    desc: "Reevup'Avis s'occupe de tout : collecte, filtrage, réponse IA. Concentrez-vous sur votre coeur de métier.",
     color: "#FEE2E2",
     iconColor: "#DC2626",
   },
