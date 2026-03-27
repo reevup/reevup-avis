@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTheme } from "./ThemeProvider";
 
 const withoutItems = [
   { icon: "😤", text: "Un client mécontent publie un avis 1 étoile" },
@@ -17,20 +18,22 @@ const withItems = [
 ];
 
 export default function Comparison() {
+  const { theme } = useTheme();
+
   return (
-    <section className="py-16" style={{ background: "#F3EEFA" }}>
+    <section className="py-16" style={{ background: theme === "dark" ? "#1e1525" : "#F3EEFA" }}>
       <div className="max-w-6xl mx-auto px-6">
         <motion.h2
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900"
+          className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900 dark:text-white"
         >
           Avant / Après Reevup&apos;Avis
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
           viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.5 }}
-          className="text-gray-600 text-center mb-14 text-lg"
+          className="text-gray-600 dark:text-gray-300 text-center mb-14 text-lg"
         >
           La différence se voit dès la première semaine.
         </motion.p>
@@ -40,12 +43,12 @@ export default function Comparison() {
           <motion.div
             initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.6 }}
-            className="bg-white rounded-2xl p-6 sm:p-8 md:p-10 border-2 border-red-100 shadow-sm relative overflow-hidden"
+            className="bg-white dark:bg-[#2a2a2a] rounded-2xl p-6 sm:p-8 md:p-10 border-2 border-red-100 dark:border-red-900/30 shadow-sm relative overflow-hidden"
           >
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-400 to-red-300" />
             <div className="flex items-center gap-3 mb-8">
-              <span className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center text-lg">😰</span>
-              <h3 className="text-xl font-bold text-gray-900">Sans Reevup&apos;Avis</h3>
+              <span className="w-10 h-10 rounded-full bg-red-50 dark:bg-red-900/20 flex items-center justify-center text-lg">😰</span>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white">Sans Reevup&apos;Avis</h3>
             </div>
             <div className="flex flex-col gap-5">
               {withoutItems.map((item, i) => (
@@ -56,7 +59,7 @@ export default function Comparison() {
                   className="flex items-start gap-4"
                 >
                   <span className="text-xl flex-shrink-0 mt-0.5">{item.icon}</span>
-                  <p className="text-gray-700 leading-relaxed">{item.text}</p>
+                  <p className="text-gray-700 dark:text-gray-200 leading-relaxed">{item.text}</p>
                 </motion.div>
               ))}
             </div>
@@ -66,12 +69,12 @@ export default function Comparison() {
           <motion.div
             initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.6 }}
-            className="bg-white rounded-2xl p-6 sm:p-8 md:p-10 border-2 border-green-100 shadow-lg relative overflow-hidden"
+            className="bg-white dark:bg-[#2a2a2a] rounded-2xl p-6 sm:p-8 md:p-10 border-2 border-green-100 dark:border-green-900/30 shadow-lg relative overflow-hidden"
           >
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#51197e] to-[#7C3AED]" />
             <div className="flex items-center gap-3 mb-8">
-              <span className="w-10 h-10 rounded-full flex items-center justify-center text-lg" style={{ background: "#EDE5F7" }}>🚀</span>
-              <h3 className="text-xl font-bold text-gray-900">Avec Reevup&apos;Avis</h3>
+              <span className="w-10 h-10 rounded-full flex items-center justify-center text-lg" style={{ background: theme === "dark" ? "#2a1d3a" : "#EDE5F7" }}>🚀</span>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white">Avec Reevup&apos;Avis</h3>
             </div>
             <div className="flex flex-col gap-5">
               {withItems.map((item, i) => (
@@ -82,7 +85,7 @@ export default function Comparison() {
                   className="flex items-start gap-4"
                 >
                   <span className="text-xl flex-shrink-0 mt-0.5">{item.icon}</span>
-                  <p className="text-gray-700 leading-relaxed">{item.text}</p>
+                  <p className="text-gray-700 dark:text-gray-200 leading-relaxed">{item.text}</p>
                 </motion.div>
               ))}
             </div>

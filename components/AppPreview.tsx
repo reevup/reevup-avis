@@ -2,12 +2,13 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "./ThemeProvider";
 
 function StarRating({ rating }: { rating: number }) {
   return (
     <div className="flex gap-0.5">
       {[1, 2, 3, 4, 5].map((i) => (
-        <span key={i} className={`text-sm ${i <= rating ? "text-yellow-400" : "text-gray-200"}`}>★</span>
+        <span key={i} className={`text-sm ${i <= rating ? "text-yellow-400" : "text-gray-200 dark:text-gray-500"}`}>★</span>
       ))}
     </div>
   );
@@ -46,6 +47,8 @@ function TypeWriter({ text, onDone }: { text: string; onDone?: () => void }) {
 }
 
 export default function AppPreview() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
   const [tab, setTab] = useState<"dashboard" | "assistant">("dashboard");
   const [demoStep, setDemoStep] = useState(0);
   const [typing, setTyping] = useState(false);
@@ -62,33 +65,33 @@ export default function AppPreview() {
   }, [tab]);
 
   return (
-    <section className="py-16 pb-20 bg-white">
+    <section className="py-16 pb-20 bg-white dark:bg-[#1a1a1a]">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.5 }}
           className="text-center mb-10"
         >
-          <span className="text-xs font-bold text-[#51197e] uppercase tracking-widest mb-4 block">Aperçu de l&apos;application</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <span className="text-xs font-bold text-[#51197e] dark:text-[#c4b0e0] uppercase tracking-widest mb-4 block">Aperçu de l&apos;application</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Tout se gère depuis votre dashboard
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-8">
+          <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto mb-8">
             Suivez vos avis en temps réel et laissez l&apos;IA répondre à votre place.
           </p>
 
-          <div className="inline-flex rounded-full p-1" style={{ background: "#EDE5F7" }}>
+          <div className="inline-flex rounded-full p-1" style={{ background: isDark ? "#2a1d3a" : "#EDE5F7" }}>
             <button
               onClick={() => setTab("dashboard")}
               className="px-6 py-2.5 rounded-full text-sm font-semibold transition-all outline-none focus:outline-none"
-              style={tab === "dashboard" ? { background: "#51197e", color: "#fff" } : { color: "#51197e" }}
+              style={tab === "dashboard" ? { background: "#51197e", color: "#fff" } : { color: isDark ? "#c4b0e0" : "#51197e" }}
             >
               📊 Tableau de bord
             </button>
             <button
               onClick={() => setTab("assistant")}
               className="px-6 py-2.5 rounded-full text-sm font-semibold transition-all outline-none focus:outline-none"
-              style={tab === "assistant" ? { background: "#51197e", color: "#fff" } : { color: "#51197e" }}
+              style={tab === "assistant" ? { background: "#51197e", color: "#fff" } : { color: isDark ? "#c4b0e0" : "#51197e" }}
             >
               🤖 Assistant IA
             </button>
@@ -105,16 +108,16 @@ export default function AppPreview() {
               transition={{ duration: 0.2 }}
               className="relative max-w-5xl mx-auto"
             >
-              <div className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+              <div className="bg-white dark:bg-[#2a2a2a] rounded-2xl shadow-xl border border-gray-200 dark:border-[#3a3a3a] overflow-hidden">
                 {/* Browser bar */}
-                <div className="bg-gray-50 border-b border-gray-200 px-4 py-3 flex items-center gap-2">
+                <div className="bg-gray-50 dark:bg-[#222222] border-b border-gray-200 dark:border-[#3a3a3a] px-4 py-3 flex items-center gap-2">
                   <div className="flex gap-1.5">
                     <div className="w-3 h-3 rounded-full bg-red-400" />
                     <div className="w-3 h-3 rounded-full bg-yellow-400" />
                     <div className="w-3 h-3 rounded-full bg-green-400" />
                   </div>
                   <div className="flex-1 flex justify-center">
-                    <div className="bg-white border border-gray-200 rounded-lg px-3 py-1 text-[10px] sm:text-xs text-gray-400 w-40 sm:w-64 text-center truncate">
+                    <div className="bg-white dark:bg-[#333333] border border-gray-200 dark:border-[#3a3a3a] rounded-lg px-3 py-1 text-[10px] sm:text-xs text-gray-400 dark:text-gray-500 w-40 sm:w-64 text-center truncate">
                       app.reevup-avis.fr/dashboard
                     </div>
                   </div>
@@ -122,23 +125,23 @@ export default function AppPreview() {
 
                 <div className="flex">
                   {/* Sidebar */}
-                  <div className="hidden lg:flex flex-col w-52 border-r border-gray-100 bg-gray-50/50 p-4">
+                  <div className="hidden lg:flex flex-col w-52 border-r border-gray-100 dark:border-[#3a3a3a] bg-gray-50/50 dark:bg-[#222222]/50 p-4">
                     <div className="flex items-center gap-2 mb-6">
                       <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: "#51197e" }}>
                         <span className="text-white text-xs font-bold">R</span>
                       </div>
-                      <span className="font-bold text-sm text-gray-900">Reevup</span>
+                      <span className="font-bold text-sm text-gray-900 dark:text-white">Reevup</span>
                     </div>
-                    <div className="text-xs text-gray-400 uppercase tracking-wider mb-3">Établissement</div>
-                    <div className="bg-white rounded-lg px-3 py-2 border border-gray-200 text-xs font-medium text-gray-700 mb-5">
+                    <div className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-3">Établissement</div>
+                    <div className="bg-white dark:bg-[#333333] rounded-lg px-3 py-2 border border-gray-200 dark:border-[#3a3a3a] text-xs font-medium text-gray-700 dark:text-gray-200 mb-5">
                       Restaurant Le Petit Bistrot
                     </div>
                     <nav className="flex flex-col gap-1 text-xs">
-                      <div className="px-3 py-2 rounded-lg font-semibold text-[#51197e]" style={{ background: "#EDE5F7" }}>Tableau de bord</div>
-                      <div className="px-3 py-2 rounded-lg text-gray-600">Ma signature</div>
-                      <div className="px-3 py-2 rounded-lg text-gray-600">Mon QR Code</div>
-                      <div className="px-3 py-2 rounded-lg text-gray-600">Mon assistant IA</div>
-                      <div className="px-3 py-2 rounded-lg text-gray-600">Mes avis</div>
+                      <div className="px-3 py-2 rounded-lg font-semibold text-[#51197e] dark:text-[#c4b0e0]" style={{ background: isDark ? "#2a1d3a" : "#EDE5F7" }}>Tableau de bord</div>
+                      <div className="px-3 py-2 rounded-lg text-gray-600 dark:text-gray-300">Ma signature</div>
+                      <div className="px-3 py-2 rounded-lg text-gray-600 dark:text-gray-300">Mon QR Code</div>
+                      <div className="px-3 py-2 rounded-lg text-gray-600 dark:text-gray-300">Mon assistant IA</div>
+                      <div className="px-3 py-2 rounded-lg text-gray-600 dark:text-gray-300">Mes avis</div>
                     </nav>
                   </div>
 
@@ -146,8 +149,8 @@ export default function AppPreview() {
                   <div className="flex-1 p-4 sm:p-5 md:p-8">
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 mb-6">
                       <div>
-                        <h3 className="font-bold text-gray-900 text-base sm:text-lg">Tableau de bord</h3>
-                        <p className="text-[10px] sm:text-xs text-gray-500">Vue d&apos;ensemble de votre réputation</p>
+                        <h3 className="font-bold text-gray-900 dark:text-white text-base sm:text-lg">Tableau de bord</h3>
+                        <p className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400">Vue d&apos;ensemble de votre réputation</p>
                       </div>
                       <span className="px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-bold text-white" style={{ background: "#10B981" }}>
                         Performance du mois
@@ -155,7 +158,7 @@ export default function AppPreview() {
                     </div>
 
                     {/* Google Rating Badge */}
-                    <div className="flex items-center gap-3 p-3 sm:p-4 rounded-xl border border-gray-200 bg-white mb-5">
+                    <div className="flex items-center gap-3 p-3 sm:p-4 rounded-xl border border-gray-200 dark:border-[#3a3a3a] bg-white dark:bg-[#333333] mb-5">
                       <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
                         <svg viewBox="0 0 24 24" className="w-8 h-8">
                           <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
@@ -166,30 +169,30 @@ export default function AppPreview() {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
-                          <span className="text-sm font-bold text-gray-900">Google Business Profile</span>
+                          <span className="text-sm font-bold text-gray-900 dark:text-white">Google Business Profile</span>
                           <span className="px-2 py-0.5 rounded-full text-[9px] font-bold text-green-700 bg-green-100">Connecté</span>
                         </div>
                         <div className="flex items-center gap-2 mt-0.5">
-                          <span className="text-lg font-extrabold text-gray-900" style={{ fontFamily: "'Neue Machina', sans-serif" }}>4.2</span>
+                          <span className="text-lg font-extrabold text-gray-900 dark:text-white" style={{ fontFamily: "'Neue Machina', sans-serif" }}>4.2</span>
                           <div className="flex gap-0.5">
                             {[1,2,3,4].map(i => <span key={i} className="text-yellow-400 text-xs">★</span>)}
-                            <span className="text-gray-200 text-xs">★</span>
+                            <span className="text-gray-200 dark:text-gray-500 text-xs">★</span>
                           </div>
-                          <span className="text-[10px] text-gray-400">sur Google</span>
+                          <span className="text-[10px] text-gray-400 dark:text-gray-500">sur Google</span>
                         </div>
                       </div>
                     </div>
 
                     {/* Score + Distribution */}
-                    <div className="bg-gray-50 rounded-xl p-4 sm:p-5 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-5">
+                    <div className="bg-gray-50 dark:bg-[#222222] rounded-xl p-4 sm:p-5 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-5">
                       <div className="text-center flex-shrink-0">
                         <p className="text-3xl sm:text-4xl font-extrabold text-[#10B981]" style={{ fontFamily: "'Neue Machina', sans-serif" }}>4.2</p>
                         <div className="flex gap-0.5 justify-center my-1">
                           {[1,2,3,4].map(i => <span key={i} className="text-yellow-400 text-xs">★</span>)}
-                          <span className="text-gray-200 text-xs">★</span>
+                          <span className="text-gray-200 dark:text-gray-500 text-xs">★</span>
                         </div>
                         <p className="text-xs font-semibold text-[#10B981]">Excellent</p>
-                        <p className="text-[10px] text-gray-400 mt-1">Basé sur 36 avis</p>
+                        <p className="text-[10px] text-gray-400 dark:text-gray-500 mt-1">Basé sur 36 avis</p>
                       </div>
                       <div className="flex-1 w-full flex flex-col gap-1.5 text-xs">
                         {[
@@ -200,9 +203,9 @@ export default function AppPreview() {
                           { stars: 1, pct: 0, color: "#EF4444" },
                         ].map(r => (
                           <div key={r.stars} className="flex items-center gap-1.5 sm:gap-2">
-                            <span className="text-gray-500 w-3 sm:w-4 text-right text-[10px] sm:text-xs">{r.stars}</span>
+                            <span className="text-gray-500 dark:text-gray-400 w-3 sm:w-4 text-right text-[10px] sm:text-xs">{r.stars}</span>
                             <span className="text-yellow-400 text-[10px]">★</span>
-                            <div className="flex-1 bg-gray-200 rounded-full h-1.5 sm:h-2 overflow-hidden">
+                            <div className="flex-1 bg-gray-200 dark:bg-[#3a3a3a] rounded-full h-1.5 sm:h-2 overflow-hidden">
                               <div className="h-full rounded-full" style={{ width: `${r.pct}%`, background: r.color }} />
                             </div>
                           </div>
@@ -218,9 +221,9 @@ export default function AppPreview() {
                         { label: "Taux de réponse", value: "87%", sub: "6 réponses", color: "#10B981" },
                         { label: "Évolution note", value: "+3.10", sub: "vs 30j", color: "#10B981" },
                       ].map(kpi => (
-                        <div key={kpi.label} className="bg-gray-50 rounded-xl p-2.5 sm:p-3">
-                          <p className="text-[9px] sm:text-[10px] text-gray-500 mb-1">{kpi.label}</p>
-                          <p className="text-lg sm:text-xl font-bold text-gray-900" style={{ fontFamily: "'Neue Machina', sans-serif" }}>{kpi.value}</p>
+                        <div key={kpi.label} className="bg-gray-50 dark:bg-[#222222] rounded-xl p-2.5 sm:p-3">
+                          <p className="text-[9px] sm:text-[10px] text-gray-500 dark:text-gray-400 mb-1">{kpi.label}</p>
+                          <p className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white" style={{ fontFamily: "'Neue Machina', sans-serif" }}>{kpi.value}</p>
                           <p className="text-[9px] sm:text-[10px] font-medium" style={{ color: kpi.color }}>{kpi.sub}</p>
                         </div>
                       ))}
@@ -228,23 +231,23 @@ export default function AppPreview() {
 
                     {/* Recent reviews */}
                     <div>
-                      <h4 className="font-bold text-sm text-gray-900 mb-3">Derniers avis reçus</h4>
+                      <h4 className="font-bold text-sm text-gray-900 dark:text-white mb-3">Derniers avis reçus</h4>
                       <div className="flex flex-col gap-2">
                         {[
                           { name: "Sophie Martin", date: "26 mars 2026", text: "Parfait du début à la fin. Belle découverte, je le recommande.", stars: 5, status: "Répondu", statusColor: "#10B981" },
                           { name: "Antoine Simon", date: "24 mars 2026", text: "Correct sans plus. Le service était moyen.", stars: 3, status: "Répondu", statusColor: "#10B981" },
                           { name: "Marie Laurent", date: "22 mars 2026", text: "Meilleur restaurant du quartier !", stars: 5, status: "En attente", statusColor: "#F59E0B" },
                         ].map(review => (
-                          <div key={review.name} className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 bg-gray-50 rounded-lg">
+                          <div key={review.name} className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 bg-gray-50 dark:bg-[#222222] rounded-lg">
                             <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-white text-[10px] sm:text-xs font-bold flex-shrink-0" style={{ background: "#51197e" }}>
                               {review.name[0]}
                             </div>
                             <div className="flex-1 min-w-0">
                               <div className="flex flex-wrap items-center gap-1 sm:gap-2 mb-0.5">
-                                <span className="font-semibold text-[10px] sm:text-xs text-gray-900">{review.name}</span>
-                                <span className="text-[9px] sm:text-[10px] text-gray-400">{review.date}</span>
+                                <span className="font-semibold text-[10px] sm:text-xs text-gray-900 dark:text-white">{review.name}</span>
+                                <span className="text-[9px] sm:text-[10px] text-gray-400 dark:text-gray-500">{review.date}</span>
                               </div>
-                              <p className="text-[10px] sm:text-xs text-gray-600 truncate">{review.text}</p>
+                              <p className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-300 truncate">{review.text}</p>
                               <span className="inline-flex items-center gap-1 mt-1 text-[10px] font-medium px-2 py-0.5 rounded-full" style={{ background: `${review.statusColor}15`, color: review.statusColor }}>
                                 ● {review.status}
                               </span>
@@ -270,15 +273,15 @@ export default function AppPreview() {
               className="relative max-w-4xl mx-auto overflow-hidden"
             >
               {/* AI Demo: Review + Real-time response */}
-              <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden">
-                <div className="bg-gray-50 border-b border-gray-200 px-4 py-3 flex items-center gap-2">
+              <div className="bg-white dark:bg-[#2a2a2a] rounded-2xl shadow-2xl border border-gray-200 dark:border-[#3a3a3a] overflow-hidden">
+                <div className="bg-gray-50 dark:bg-[#222222] border-b border-gray-200 dark:border-[#3a3a3a] px-4 py-3 flex items-center gap-2">
                   <div className="flex gap-1.5">
                     <div className="w-3 h-3 rounded-full bg-red-400" />
                     <div className="w-3 h-3 rounded-full bg-yellow-400" />
                     <div className="w-3 h-3 rounded-full bg-green-400" />
                   </div>
                   <div className="flex-1 flex justify-center">
-                    <div className="bg-white border border-gray-200 rounded-lg px-3 py-1 text-[10px] sm:text-xs text-gray-400 w-40 sm:w-64 text-center truncate">
+                    <div className="bg-white dark:bg-[#333333] border border-gray-200 dark:border-[#3a3a3a] rounded-lg px-3 py-1 text-[10px] sm:text-xs text-gray-400 dark:text-gray-500 w-40 sm:w-64 text-center truncate">
                       app.reevup-avis.fr/avis
                     </div>
                   </div>
@@ -287,14 +290,14 @@ export default function AppPreview() {
                 <div className="p-5 sm:p-8">
                   <div className="flex items-center justify-between mb-6">
                     <div>
-                      <h3 className="font-bold text-gray-900 text-sm sm:text-base">Nouvel avis reçu</h3>
-                      <p className="text-[10px] sm:text-xs text-gray-500">Il y a quelques secondes</p>
+                      <h3 className="font-bold text-gray-900 dark:text-white text-sm sm:text-base">Nouvel avis reçu</h3>
+                      <p className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400">Il y a quelques secondes</p>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: "#51197e" }}>
                         <span className="text-white text-[10px] font-bold">R</span>
                       </div>
-                      <span className="text-xs font-semibold text-gray-700">Assistant Hugo</span>
+                      <span className="text-xs font-semibold text-gray-700 dark:text-gray-200">Assistant Hugo</span>
                       <span className="px-2 py-0.5 rounded-full text-[9px] font-bold text-green-700 bg-green-100">Actif</span>
                     </div>
                   </div>
@@ -304,24 +307,24 @@ export default function AppPreview() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4 }}
-                    className="bg-gray-50 rounded-xl p-4 sm:p-5 mb-4"
+                    className="bg-gray-50 dark:bg-[#222222] rounded-xl p-4 sm:p-5 mb-4"
                   >
                     <div className="flex items-start gap-3">
                       <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm flex-shrink-0">S</div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <span className="font-semibold text-sm text-gray-900">Sophie Martin</span>
+                          <span className="font-semibold text-sm text-gray-900 dark:text-white">Sophie Martin</span>
                           <div className="flex gap-0.5">
                             {[1,2,3,4].map(i => <span key={i} className="text-yellow-400 text-xs">★</span>)}
-                            <span className="text-gray-200 text-xs">★</span>
+                            <span className="text-gray-200 dark:text-gray-500 text-xs">★</span>
                           </div>
                         </div>
-                        <p className="text-sm text-gray-700">
+                        <p className="text-sm text-gray-700 dark:text-gray-200">
                           Parfait du début à la fin ! L&apos;accueil est chaleureux, les plats sont délicieux et le cadre est magnifique. Une belle découverte, je le recommande à tous mes amis.
                         </p>
                         <div className="flex items-center gap-3 mt-2">
-                          <span className="text-[10px] text-gray-400">via Google</span>
-                          <span className="text-[10px] text-gray-400">Il y a 2 min</span>
+                          <span className="text-[10px] text-gray-400 dark:text-gray-500">via Google</span>
+                          <span className="text-[10px] text-gray-400 dark:text-gray-500">Il y a 2 min</span>
                         </div>
                       </div>
                     </div>
@@ -336,10 +339,10 @@ export default function AppPreview() {
                         transition={{ duration: 0.3 }}
                         className="mb-4 overflow-hidden"
                       >
-                        <div className="flex items-center gap-2 px-4 py-2.5 rounded-lg" style={{ background: "#EDE5F7" }}>
+                        <div className="flex items-center gap-2 px-4 py-2.5 rounded-lg" style={{ background: isDark ? "#2a1d3a" : "#EDE5F7" }}>
                           <span className="text-sm">🔍</span>
-                          <span className="text-xs font-semibold text-[#51197e]">Analyse en cours...</span>
-                          <span className="text-[10px] text-[#51197e]/70">Avis positif (5★) detecté, ton : amical</span>
+                          <span className="text-xs font-semibold text-[#51197e] dark:text-[#c4b0e0]">Analyse en cours...</span>
+                          <span className="text-[10px] text-[#51197e] dark:text-[#c4b0e0]/70">Avis positif (5★) detecté, ton : amical</span>
                           {demoStep >= 2 && (
                             <span className="ml-auto text-[10px] font-bold text-green-600">✓ Analysé</span>
                           )}
@@ -357,17 +360,17 @@ export default function AppPreview() {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <div className="bg-[#F9F7FC] rounded-xl p-4 sm:p-5 border border-[#EDE5F7]">
+                        <div className="bg-[#F9F7FC] dark:bg-[#251a35] rounded-xl p-4 sm:p-5 border border-[#EDE5F7] dark:border-[#3d2d50]">
                           <div className="flex items-center gap-2 mb-3">
                             <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ background: "#51197e" }}>
                               <span className="text-white text-xs font-bold">IA</span>
                             </div>
                             <div>
-                              <span className="font-semibold text-sm text-gray-900">Réponse de l&apos;assistant Hugo</span>
-                              {typing && <span className="text-[10px] text-[#51197e] ml-2">rédige en cours...</span>}
+                              <span className="font-semibold text-sm text-gray-900 dark:text-white">Réponse de l&apos;assistant Hugo</span>
+                              {typing && <span className="text-[10px] text-[#51197e] dark:text-[#c4b0e0] ml-2">rédige en cours...</span>}
                             </div>
                           </div>
-                          <div className="bg-white rounded-lg p-4 border border-gray-100 text-sm text-gray-700 leading-relaxed min-h-[60px]">
+                          <div className="bg-white dark:bg-[#2a2a2a] rounded-lg p-4 border border-gray-100 dark:border-[#3a3a3a] text-sm text-gray-700 dark:text-gray-200 leading-relaxed min-h-[60px]">
                             {typing ? (
                               <TypeWriter text={aiResponse} onDone={handleTypingDone} />
                             ) : (
@@ -384,10 +387,10 @@ export default function AppPreview() {
                               <button className="px-4 py-2 rounded-lg text-xs font-semibold text-white" style={{ background: "#51197e" }}>
                                 ✓ Publier la réponse
                               </button>
-                              <button className="px-4 py-2 rounded-lg text-xs font-semibold text-gray-600 border border-gray-200 bg-white">
+                              <button className="px-4 py-2 rounded-lg text-xs font-semibold text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-[#3a3a3a] bg-white dark:bg-[#333333]">
                                 Modifier
                               </button>
-                              <span className="text-[10px] text-gray-400 ml-auto">Mode : validation manuelle</span>
+                              <span className="text-[10px] text-gray-400 dark:text-gray-500 ml-auto">Mode : validation manuelle</span>
                             </motion.div>
                           )}
                         </div>
@@ -405,11 +408,11 @@ export default function AppPreview() {
                   { icon: "✅", title: "Validation ou automatique", desc: "Publiez automatiquement ou validez chaque réponse avant publication." },
                   { icon: "🎨", title: "6 assistants au choix", desc: "Choisissez la personnalité et les couleurs de votre assistant." },
                 ].map(f => (
-                  <div key={f.title} className="flex gap-3 p-4 rounded-xl bg-gray-50 border border-gray-100">
+                  <div key={f.title} className="flex gap-3 p-4 rounded-xl bg-gray-50 dark:bg-[#222222] border border-gray-100 dark:border-[#3a3a3a]">
                     <span className="text-xl flex-shrink-0">{f.icon}</span>
                     <div>
-                      <h4 className="font-bold text-sm text-gray-900 mb-0.5">{f.title}</h4>
-                      <p className="text-xs text-gray-500">{f.desc}</p>
+                      <h4 className="font-bold text-sm text-gray-900 dark:text-white mb-0.5">{f.title}</h4>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">{f.desc}</p>
                     </div>
                   </div>
                 ))}

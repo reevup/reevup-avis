@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTheme } from "./ThemeProvider";
 
 const benefits = [
   {
@@ -12,6 +13,7 @@ const benefits = [
     title: "Récoltez 9x plus d'avis",
     desc: "En sollicitant vos clients au bon moment, vous multipliez naturellement le nombre d'avis récoltés sur Google.",
     color: "#FEF3C7",
+    darkColor: "#332810",
     iconColor: "#D97706",
   },
   {
@@ -23,6 +25,7 @@ const benefits = [
     title: "Améliorez votre référencement",
     desc: "Les moteurs de recherche valorisent les contenus générés par les utilisateurs. Plus d'avis = meilleur SEO local.",
     color: "#EDE9FE",
+    darkColor: "#2a1d3a",
     iconColor: "#7C3AED",
   },
   {
@@ -34,6 +37,7 @@ const benefits = [
     title: "Augmentez votre chiffre d'affaires",
     desc: "Selon Harvard Business School, une étoile supplémentaire sur Google peut générer jusqu'à +9% de CA.",
     color: "#DBEAFE",
+    darkColor: "#1a2540",
     iconColor: "#2563EB",
   },
   {
@@ -45,6 +49,7 @@ const benefits = [
     title: "Arrêtez de vous épuiser",
     desc: "Reevup'Avis s'occupe de tout : collecte, filtrage, réponse IA. Concentrez-vous sur votre coeur de métier.",
     color: "#FEE2E2",
+    darkColor: "#331a1a",
     iconColor: "#DC2626",
   },
 ];
@@ -53,8 +58,10 @@ const container = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } 
 const item = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
 
 export default function Benefits() {
+  const { theme } = useTheme();
+
   return (
-    <section className="py-16" style={{ background: "#F3EEFA" }}>
+    <section className="py-16" style={{ background: theme === "dark" ? "#1e1525" : "#F3EEFA" }}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-16 items-center">
           {/* Left */}
@@ -62,17 +69,17 @@ export default function Benefits() {
             initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.5 }}
           >
-            <span className="text-xs font-bold text-[#51197e] uppercase tracking-widest mb-4 block">Bénéfices</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-8">
+            <span className="text-xs font-bold text-[#51197e] dark:text-[#c4b0e0] uppercase tracking-widest mb-4 block">Bénéfices</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight mb-8">
               Un investissement{" "}
-              <span className="text-[#51197e]">rentable et intelligent</span>
+              <span className="text-[#51197e] dark:text-[#c4b0e0]">rentable et intelligent</span>
             </h2>
             <div className="flex flex-wrap gap-3">
               <a href="#tarifs" className="px-7 py-3.5 rounded-full bg-[#51197e] text-white font-semibold hover:bg-[#6B21A8] transition-all shadow-xl shadow-[#51197e]/25 group flex items-center gap-2">
                 Essayer gratuitement
                 <span className="group-hover:translate-x-1 transition-transform">→</span>
               </a>
-              <a href="#demo" className="px-7 py-3.5 rounded-full border-2 border-[#51197e]/20 text-[#51197e] font-semibold hover:bg-white transition-all flex items-center gap-2">
+              <a href="#demo" className="px-7 py-3.5 rounded-full border-2 border-[#51197e]/20 dark:border-[#9371d1]/30 text-[#51197e] dark:text-[#c4b0e0] font-semibold hover:bg-white dark:hover:bg-[#2a2a2a] transition-all flex items-center gap-2">
                 Demander une démo
               </a>
             </div>
@@ -85,14 +92,14 @@ export default function Benefits() {
           >
             {benefits.map((b) => (
               <motion.div key={b.title} variants={item}
-                className="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all"
+                className="bg-white dark:bg-[#2a2a2a] rounded-2xl p-7 shadow-sm border border-gray-100 dark:border-[#3a3a3a] hover:shadow-lg hover:-translate-y-1 transition-all"
               >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                  style={{ background: b.color, color: b.iconColor }}>
+                  style={{ background: theme === "dark" ? b.darkColor : b.color, color: b.iconColor }}>
                   {b.icon}
                 </div>
-                <h3 className="font-bold text-gray-900 mb-2">{b.title}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">{b.desc}</p>
+                <h3 className="font-bold text-gray-900 dark:text-white mb-2">{b.title}</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{b.desc}</p>
               </motion.div>
             ))}
           </motion.div>

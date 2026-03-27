@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTheme } from "./ThemeProvider";
 
 const stats = [
   { value: "72%", label: "des consommateurs", desc: "lisent les avis en ligne avant d'acheter un produit ou un service.", source: "Consumer Survey 2024" },
@@ -13,15 +14,16 @@ const container = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } 
 const item = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
 
 export default function Stats() {
+  const { theme } = useTheme();
   return (
-    <section className="py-16" style={{ background: "#F9F7FC" }}>
+    <section className="py-16" style={{ background: theme === "dark" ? "#222222" : "#F9F7FC" }}>
       <div className="max-w-5xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.5 }}
           className="flex justify-center mb-6"
         >
-          <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold" style={{ background: "#EDE5F7", color: "#51197e" }}>
+          <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold" style={{ background: theme === "dark" ? "#2a1d3a" : "#EDE5F7", color: theme === "dark" ? "#c4b0e0" : "#51197e" }}>
             👤 Et vous ?
           </span>
         </motion.div>
@@ -29,14 +31,14 @@ export default function Stats() {
         <motion.h2
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-3 text-gray-900 max-w-3xl mx-auto"
+          className="text-3xl md:text-4xl font-bold text-center mb-3 text-gray-900 dark:text-white max-w-3xl mx-auto"
         >
           Vous faites du bon travail, vos clients sont satisfaits, mais...
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
           viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-gray-500 text-center mb-14 text-lg"
+          className="text-gray-500 dark:text-gray-400 text-center mb-14 text-lg"
         >
           ...ils ne pensent pas toujours à vous laisser un avis ?
         </motion.p>
@@ -44,9 +46,9 @@ export default function Stats() {
         <motion.div
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.15 }}
-          className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-12"
+          className="bg-white dark:bg-[#2a2a2a] rounded-3xl shadow-xl border border-gray-100 dark:border-[#3a3a3a] p-8 md:p-12"
         >
-          <p className="text-center text-gray-800 font-semibold text-lg mb-10">
+          <p className="text-center text-gray-800 dark:text-gray-100 font-semibold text-lg mb-10">
             Résultat : vous vous retrouvez avec trop peu d&apos;avis Google, alors que :
           </p>
 
@@ -56,12 +58,12 @@ export default function Stats() {
           >
             {stats.map((s) => (
               <motion.div key={s.value} variants={item}>
-                <p className="text-gray-900 mb-1">
+                <p className="text-gray-900 dark:text-white mb-1">
                   <span className="text-2xl font-extrabold" style={{ fontFamily: "'Neue Machina', sans-serif" }}>{s.value}</span>{" "}
                   <span className="font-bold">{s.label}</span>
                 </p>
-                <p className="text-gray-600 text-sm leading-relaxed mb-1">{s.desc}</p>
-                <p className="text-[#51197e] text-xs font-medium">{s.source}</p>
+                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-1">{s.desc}</p>
+                <p className="text-[#51197e] dark:text-[#c4b0e0] text-xs font-medium">{s.source}</p>
               </motion.div>
             ))}
           </motion.div>

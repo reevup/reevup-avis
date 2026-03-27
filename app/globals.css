@@ -2,41 +2,92 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
+/* Class-based dark mode for Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ─── CSS Variables ─── */
+:root {
+  --bg-main: #ffffff;
+  --bg-alt: #F9F7FC;
+  --bg-purple-section: #F3EEFA;
+  --bg-card: #ffffff;
+  --bg-subtle: #f9fafb;
+  --bg-input: #ffffff;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-tertiary: #9ca3af;
+  --border-main: #f3f4f6;
+  --border-card: #e9e2f5;
+  --glass-bg: #ffffff;
+  --glass-border: #e9e2f5;
+  --glass-shadow: rgba(81, 25, 126, 0.06);
+  --glass-shadow-hover: rgba(81, 25, 126, 0.12);
+  --glass-border-hover: #c4b0e0;
+  --scrollbar-track: #f5f5f5;
+  --scrollbar-thumb: #9371d1;
+  --badge-bg: #EDE5F7;
+}
+
+.dark {
+  --bg-main: #1a1a1a;
+  --bg-alt: #222222;
+  --bg-purple-section: #1e1525;
+  --bg-card: #2a2a2a;
+  --bg-subtle: #333333;
+  --bg-input: #333333;
+  --text-primary: #f5f5f5;
+  --text-secondary: #b0b0b0;
+  --text-tertiary: #777777;
+  --border-main: #3a3a3a;
+  --border-card: #3d2d50;
+  --glass-bg: #2a2a2a;
+  --glass-border: #3d2d50;
+  --glass-shadow: rgba(81, 25, 126, 0.2);
+  --glass-shadow-hover: rgba(81, 25, 126, 0.4);
+  --glass-border-hover: #51197e;
+  --scrollbar-track: #222222;
+  --scrollbar-thumb: #51197e;
+  --badge-bg: #2a1d3a;
+}
+
 html {
   scroll-behavior: smooth;
+  overscroll-behavior-y: none;
 }
 
 body {
-  background: #ffffff;
-  color: #111827;
+  background: var(--bg-main);
+  color: var(--text-primary);
   font-family: 'DM Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overscroll-behavior-y: none;
 }
 
 h1, h2, h3, h4 {
   font-family: 'Neue Machina', sans-serif;
-  color: #111827;
+  color: var(--text-primary);
 }
 
-/* Glass card light */
+/* Glass card */
 .glass-card {
-  background: #ffffff;
-  border: 1px solid #e9e2f5;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   border-radius: 20px;
-  box-shadow: 0 4px 24px rgba(81, 25, 126, 0.06);
+  box-shadow: 0 4px 24px var(--glass-shadow);
   transition: all 0.3s ease;
 }
 .glass-card:hover {
-  border-color: #c4b0e0;
-  box-shadow: 0 8px 40px rgba(81, 25, 126, 0.12);
+  border-color: var(--glass-border-hover);
+  box-shadow: 0 8px 40px var(--glass-shadow-hover);
   transform: translateY(-4px);
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #f5f5f5; }
-::-webkit-scrollbar-thumb { background: #9371d1; border-radius: 3px; }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
 
 /* Blob */
 @keyframes blobFloat {
@@ -59,6 +110,9 @@ input[type="range"]::-webkit-slider-thumb {
   border: 3px solid white;
   box-shadow: 0 2px 6px rgba(81, 25, 126, 0.3);
 }
+.dark input[type="range"]::-webkit-slider-thumb {
+  border-color: #333333;
+}
 input[type="range"]::-moz-range-thumb {
   width: 22px;
   height: 22px;
@@ -68,10 +122,13 @@ input[type="range"]::-moz-range-thumb {
   border: 3px solid white;
   box-shadow: 0 2px 6px rgba(81, 25, 126, 0.3);
 }
+.dark input[type="range"]::-moz-range-thumb {
+  border-color: #333333;
+}
 
 /* FAQ */
 .faq-item {
-  border-bottom: 1px solid #f0ebf8;
+  border-bottom: 1px solid var(--border-main);
 }
 
 /* Mobile-specific fixes */
@@ -79,4 +136,12 @@ input[type="range"]::-moz-range-thumb {
   section {
     overflow-x: hidden;
   }
+}
+
+/* Smooth transitions for theme switch */
+.dark nav,
+.dark section,
+.dark footer,
+.dark div {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "./ThemeProvider";
 
 const negativeSteps = [
   { icon: "🛡️", title: "Avis intercepté", desc: "L'avis négatif ne sera jamais publié sur Google." },
@@ -18,24 +19,25 @@ const positiveSteps = [
 export default function InteractiveDemo() {
   const [stars, setStars] = useState(0);
   const [hoveredStar, setHoveredStar] = useState(0);
+  const { theme } = useTheme();
 
   const isPositive = stars >= 4;
   const isNegative = stars > 0 && stars < 4;
   const steps = isPositive ? positiveSteps : negativeSteps;
 
   return (
-    <section id="simulation" className="py-16 bg-white">
+    <section id="simulation" className="py-16 bg-white dark:bg-[#1a1a1a]">
       <div className="max-w-4xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.5 }}
           className="text-center mb-4"
         >
-          <span className="text-xs font-bold text-[#51197e] uppercase tracking-widest mb-4 block">Démo interactive</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <span className="text-xs font-bold text-[#51197e] dark:text-[#c4b0e0] uppercase tracking-widest mb-4 block">Démo interactive</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Testez par vous-même
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
             Imaginez qu&apos;un client vient de manger dans votre restaurant. Quelle note donnerait-il ?
           </p>
         </motion.div>
@@ -46,7 +48,7 @@ export default function InteractiveDemo() {
           viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.15 }}
           className="flex flex-col items-center gap-4 my-12"
         >
-          <p className="text-sm font-semibold text-gray-500">Cliquez sur une note :</p>
+          <p className="text-sm font-semibold text-gray-500 dark:text-gray-400">Cliquez sur une note :</p>
           <div className="flex gap-2">
             {[1, 2, 3, 4, 5].map((i) => (
               <button
@@ -57,7 +59,7 @@ export default function InteractiveDemo() {
                 className="transition-all duration-150 hover:scale-125"
               >
                 <span className={`text-5xl cursor-pointer ${
-                  i <= (hoveredStar || stars) ? "text-yellow-400" : "text-gray-200"
+                  i <= (hoveredStar || stars) ? "text-yellow-400" : "text-gray-200 dark:text-gray-600"
                 } transition-colors`}>
                   ★
                 </span>
@@ -97,8 +99,8 @@ export default function InteractiveDemo() {
               </div>
 
               {/* Steps */}
-              <div className="bg-white rounded-b-2xl border-2 border-t-0 p-4 sm:p-6 md:p-8 shadow-xl"
-                style={{ borderColor: isPositive ? "#51197e" : "#FCA5A5" }}>
+              <div className="bg-white dark:bg-[#2a2a2a] rounded-b-2xl border-2 border-t-0 border-gray-200 dark:border-[#3a3a3a] p-4 sm:p-6 md:p-8 shadow-xl"
+                style={{ borderColor: isPositive ? (theme === "dark" ? "#9371d1" : "#51197e") : "#FCA5A5" }}>
                 <div className="flex flex-col gap-6">
                   {steps.map((step, i) => (
                     <motion.div
@@ -116,8 +118,8 @@ export default function InteractiveDemo() {
                         <span className="text-2xl">{step.icon}</span>
                       </div>
                       <div>
-                        <p className="font-bold text-gray-900">{step.title}</p>
-                        <p className="text-gray-600 text-sm">{step.desc}</p>
+                        <p className="font-bold text-gray-900 dark:text-white">{step.title}</p>
+                        <p className="text-gray-600 dark:text-gray-300 text-sm">{step.desc}</p>
                       </div>
                     </motion.div>
                   ))}
@@ -130,8 +132,10 @@ export default function InteractiveDemo() {
                   transition={{ delay: 1 }}
                   className="mt-8 p-4 rounded-xl text-center"
                   style={{
-                    background: isPositive ? "#EDE5F7" : "#FEF2F2",
-                    color: isPositive ? "#51197e" : "#DC2626",
+                    background: isPositive
+                      ? (theme === "dark" ? "#2a1d3a" : "#EDE5F7")
+                      : (theme === "dark" ? "#331a1a" : "#FEF2F2"),
+                    color: isPositive ? (theme === "dark" ? "#c4b0e0" : "#51197e") : "#DC2626",
                   }}
                 >
                   <p className="font-bold text-sm">
@@ -160,9 +164,9 @@ export default function InteractiveDemo() {
           <motion.div
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
             viewport={{ once: true }} transition={{ delay: 0.3 }}
-            className="text-center py-16 rounded-2xl border-2 border-dashed border-gray-200"
+            className="text-center py-16 rounded-2xl border-2 border-dashed border-gray-200 dark:border-[#3a3a3a]"
           >
-            <p className="text-gray-400 text-lg">👆 Cliquez sur une étoile pour lancer la simulation</p>
+            <p className="text-gray-400 dark:text-gray-500 text-lg">👆 Cliquez sur une étoile pour lancer la simulation</p>
           </motion.div>
         )}
       </div>

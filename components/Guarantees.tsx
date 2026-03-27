@@ -72,7 +72,7 @@ export default function Guarantees() {
             <motion.div key={g.title} variants={item}
               className="text-center p-8 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group"
             >
-              <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-[#51197e] mx-auto mb-5 transition-colors group-hover:text-white group-hover:bg-[#51197e]"
+              <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-[#51197e] dark:text-[#c4b0e0] mx-auto mb-5 transition-colors group-hover:text-white group-hover:bg-[#51197e]"
                 style={{ background: "#EDE5F7" }}>
                 {g.icon}
               </div>

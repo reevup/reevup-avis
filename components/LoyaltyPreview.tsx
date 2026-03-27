@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "./ThemeProvider";
 
 const wheelSegments = [
   { label: "-10%", color: "#51197e", text: "#fff" },
@@ -13,6 +14,8 @@ const wheelSegments = [
 ];
 
 export default function LoyaltyPreview() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
   const [activeTab, setActiveTab] = useState<"roulette" | "coupon">("roulette");
   const [spinning, setSpinning] = useState(false);
   const [spinDeg, setSpinDeg] = useState(0);
@@ -38,7 +41,7 @@ export default function LoyaltyPreview() {
   };
 
   return (
-    <section className="py-16" style={{ background: "#F9F7FC" }}>
+    <section className="py-16" style={{ background: isDark ? "#222222" : "#F9F7FC" }}>
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -49,7 +52,7 @@ export default function LoyaltyPreview() {
         >
           <span
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold"
-            style={{ background: "#EDE5F7", color: "#51197e" }}
+            style={{ background: isDark ? "#2a1d3a" : "#EDE5F7", color: isDark ? "#c4b0e0" : "#51197e" }}
           >
             🎁 Nouveau
           </span>
@@ -60,7 +63,7 @@ export default function LoyaltyPreview() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-3 text-gray-900"
+          className="text-3xl md:text-4xl font-bold text-center mb-3 text-gray-900 dark:text-white"
         >
           Fidélisez vos clients avec des récompenses
         </motion.h2>
@@ -69,7 +72,7 @@ export default function LoyaltyPreview() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-gray-500 text-center mb-14 text-lg max-w-2xl mx-auto"
+          className="text-gray-500 dark:text-gray-400 text-center mb-14 text-lg max-w-2xl mx-auto"
         >
           Option activable en un clic depuis votre dashboard. Offrez une roulette
           ou un bon de réduction après chaque avis, si vous le souhaitez.
@@ -77,14 +80,14 @@ export default function LoyaltyPreview() {
 
         {/* Tab switcher */}
         <div className="flex justify-center mb-10">
-          <div className="inline-flex rounded-full p-1" style={{ background: "#EDE5F7" }}>
+          <div className="inline-flex rounded-full p-1" style={{ background: isDark ? "#2a1d3a" : "#EDE5F7" }}>
             <button
               onClick={() => { setActiveTab("roulette"); setWon(null); }}
               className="px-6 py-2.5 rounded-full text-sm font-semibold transition-all outline-none focus:outline-none"
               style={
                 activeTab === "roulette"
                   ? { background: "#51197e", color: "#fff" }
-                  : { color: "#51197e" }
+                  : { color: isDark ? "#c4b0e0" : "#51197e" }
               }
             >
               🎰 Roulette
@@ -95,7 +98,7 @@ export default function LoyaltyPreview() {
               style={
                 activeTab === "coupon"
                   ? { background: "#51197e", color: "#fff" }
-                  : { color: "#51197e" }
+                  : { color: isDark ? "#c4b0e0" : "#51197e" }
               }
             >
               🎟️ Bon de réduction
@@ -110,13 +113,13 @@ export default function LoyaltyPreview() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-10"
+            className="bg-white dark:bg-[#2a2a2a] rounded-3xl shadow-xl border border-gray-100 dark:border-[#3a3a3a] p-8 md:p-10"
           >
             <div className="flex items-center gap-2 mb-6">
               <div className="w-3 h-3 rounded-full bg-red-400" />
               <div className="w-3 h-3 rounded-full bg-yellow-400" />
               <div className="w-3 h-3 rounded-full bg-green-400" />
-              <span className="ml-3 text-xs text-gray-400 bg-gray-50 px-3 py-1 rounded-full flex-1 text-center truncate">
+              <span className="ml-3 text-xs text-gray-400 dark:text-gray-500 bg-gray-50 dark:bg-[#222222] px-3 py-1 rounded-full flex-1 text-center truncate">
                 app.reevup-avis.fr/recompense
               </span>
             </div>
@@ -130,10 +133,10 @@ export default function LoyaltyPreview() {
                   exit={{ opacity: 0 }}
                   className="flex flex-col items-center"
                 >
-                  <p className="text-center text-gray-800 font-semibold mb-1">
+                  <p className="text-center text-gray-800 dark:text-gray-100 font-semibold mb-1">
                     Merci pour votre avis ! 🎉
                   </p>
-                  <p className="text-center text-gray-500 text-sm mb-6">
+                  <p className="text-center text-gray-500 dark:text-gray-400 text-sm mb-6">
                     Tentez votre chance et gagnez une récompense
                   </p>
 
@@ -141,9 +144,9 @@ export default function LoyaltyPreview() {
                   <div className="relative w-56 h-56 sm:w-64 sm:h-64 mb-6">
                     {/* Arrow pointer */}
                     <div className="absolute -top-2 left-1/2 -translate-x-1/2 z-10 w-0 h-0"
-                      style={{ borderLeft: "10px solid transparent", borderRight: "10px solid transparent", borderTop: "20px solid #51197e" }} />
+                      style={{ borderLeft: "10px solid transparent", borderRight: "10px solid transparent", borderTop: isDark ? "20px solid #9371d1" : "20px solid #51197e" }} />
                     <div
-                      className="w-full h-full rounded-full overflow-hidden border-4 border-[#51197e] shadow-lg"
+                      className={`w-full h-full rounded-full overflow-hidden border-4 shadow-lg ${isDark ? "border-[#9371d1]" : "border-[#51197e]"}`}
                       style={{
                         transform: `rotate(${spinDeg}deg)`,
                         transition: spinning ? "transform 3.5s cubic-bezier(0.17, 0.67, 0.12, 0.99)" : "none",
@@ -198,8 +201,8 @@ export default function LoyaltyPreview() {
                       </svg>
                     </div>
                     {/* Center circle */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md border-2 border-[#51197e] flex items-center justify-center">
-                      <span className="text-xs font-bold text-[#51197e]">GO</span>
+                    <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full shadow-md border-2 flex items-center justify-center ${isDark ? "bg-[#2a2a2a] border-[#9371d1]" : "bg-white border-[#51197e]"}`}>
+                      <span className="text-xs font-bold text-[#51197e] dark:text-[#c4b0e0]">GO</span>
                     </div>
                   </div>
 
@@ -220,10 +223,10 @@ export default function LoyaltyPreview() {
                         exit={{ opacity: 0 }}
                         transition={{ type: "spring", stiffness: 300, damping: 20 }}
                         className="mt-5 px-6 py-3 rounded-2xl text-center"
-                        style={{ background: "#EDE5F7" }}
+                        style={{ background: isDark ? "#2a1d3a" : "#EDE5F7" }}
                       >
-                        <p className="text-[#51197e] font-bold text-lg">🎉 Bravo !</p>
-                        <p className="text-[#51197e] font-semibold">
+                        <p className="text-[#51197e] dark:text-[#c4b0e0] font-bold text-lg">🎉 Bravo !</p>
+                        <p className="text-[#51197e] dark:text-[#c4b0e0] font-semibold">
                           Vous avez gagné : <span className="underline">{won}</span>
                         </p>
                       </motion.div>
@@ -238,10 +241,10 @@ export default function LoyaltyPreview() {
                   exit={{ opacity: 0 }}
                   className="flex flex-col items-center"
                 >
-                  <p className="text-center text-gray-800 font-semibold mb-1">
+                  <p className="text-center text-gray-800 dark:text-gray-100 font-semibold mb-1">
                     Merci pour votre avis ! 🎉
                   </p>
-                  <p className="text-center text-gray-500 text-sm mb-6">
+                  <p className="text-center text-gray-500 dark:text-gray-400 text-sm mb-6">
                     Voici votre récompense
                   </p>
 
@@ -252,19 +255,19 @@ export default function LoyaltyPreview() {
                       <p className="text-white text-5xl font-extrabold" style={{ fontFamily: "'Neue Machina', sans-serif" }}>-15%</p>
                       <p className="text-white/80 text-sm mt-1">sur votre prochaine commande</p>
                     </div>
-                    <div className="bg-white p-5">
+                    <div className="bg-white dark:bg-[#2a2a2a] p-5">
                       <div className="flex items-center justify-between mb-4">
                         <div>
-                          <p className="text-xs text-gray-400">Code</p>
-                          <p className="font-mono font-bold text-[#51197e] tracking-wider">MERCI15</p>
+                          <p className="text-xs text-gray-400 dark:text-gray-500">Code</p>
+                          <p className="font-mono font-bold text-[#51197e] dark:text-[#c4b0e0] tracking-wider">MERCI15</p>
                         </div>
                         <div className="text-right">
-                          <p className="text-xs text-gray-400">Validité</p>
-                          <p className="text-sm font-semibold text-gray-700">30 jours</p>
+                          <p className="text-xs text-gray-400 dark:text-gray-500">Validité</p>
+                          <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">30 jours</p>
                         </div>
                       </div>
 
-                      <p className="text-xs text-gray-500 text-center mb-4">Quand souhaitez-vous l&apos;utiliser ?</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 text-center mb-4">Quand souhaitez-vous l&apos;utiliser ?</p>
 
                       <div className="flex gap-3">
                         <button
@@ -272,7 +275,7 @@ export default function LoyaltyPreview() {
                           className={`flex-1 py-2.5 rounded-xl text-sm font-semibold transition-all border-2 ${
                             couponChoice === "now"
                               ? "border-[#51197e] bg-[#51197e] text-white"
-                              : "border-[#51197e]/20 text-[#51197e] hover:bg-[#EDE5F7]"
+                              : "border-[#51197e]/20 dark:border-[#9371d1]/30 text-[#51197e] dark:text-[#c4b0e0] hover:bg-[#EDE5F7] dark:hover:bg-[#2a1d3a]"
                           }`}
                         >
                           Maintenant
@@ -282,7 +285,7 @@ export default function LoyaltyPreview() {
                           className={`flex-1 py-2.5 rounded-xl text-sm font-semibold transition-all border-2 ${
                             couponChoice === "later"
                               ? "border-[#51197e] bg-[#51197e] text-white"
-                              : "border-[#51197e]/20 text-[#51197e] hover:bg-[#EDE5F7]"
+                              : "border-[#51197e]/20 dark:border-[#9371d1]/30 text-[#51197e] dark:text-[#c4b0e0] hover:bg-[#EDE5F7] dark:hover:bg-[#2a1d3a]"
                           }`}
                         >
                           Prochaine visite
@@ -297,7 +300,7 @@ export default function LoyaltyPreview() {
                             exit={{ opacity: 0, height: 0 }}
                             className="overflow-hidden"
                           >
-                            <div className="mt-4 p-3 rounded-xl text-center" style={{ background: "#F0FDF4" }}>
+                            <div className="mt-4 p-3 rounded-xl text-center" style={{ background: isDark ? "#0f2a18" : "#F0FDF4" }}>
                               {couponChoice === "now" ? (
                                 <p className="text-sm text-green-700 font-semibold">
                                   ✅ Présentez ce bon en caisse ou à la réception
@@ -327,13 +330,13 @@ export default function LoyaltyPreview() {
             transition={{ duration: 0.5, delay: 0.15 }}
             className="flex flex-col gap-6"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold w-fit" style={{ background: "#EDE5F7", color: "#51197e" }}>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold w-fit" style={{ background: isDark ? "#2a1d3a" : "#EDE5F7", color: isDark ? "#c4b0e0" : "#51197e" }}>
               ⚙️ Option activable
             </div>
-            <h3 className="text-2xl font-bold text-gray-900">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
               Un système de fidélité 100% personnalisable
             </h3>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
               Activez cette option si vous souhaitez récompenser vos clients après un avis.
               Vous choisissez le type de récompense, le montant, la durée, tout est configurable.
             </p>
@@ -368,17 +371,17 @@ export default function LoyaltyPreview() {
               ].map((f) => (
                 <div
                   key={f.title}
-                  className="flex gap-4 p-4 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all"
+                  className="flex gap-4 p-4 rounded-2xl bg-white dark:bg-[#2a2a2a] border border-gray-100 dark:border-[#3a3a3a] shadow-sm hover:shadow-md transition-all"
                 >
                   <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
-                    style={{ background: "#EDE5F7" }}
+                    style={{ background: isDark ? "#2a1d3a" : "#EDE5F7" }}
                   >
                     {f.icon}
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-0.5">{f.title}</h4>
-                    <p className="text-sm text-gray-600">{f.desc}</p>
+                    <h4 className="font-bold text-gray-900 dark:text-white mb-0.5">{f.title}</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">{f.desc}</p>
                   </div>
                 </div>
               ))}
