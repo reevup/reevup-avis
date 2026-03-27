@@ -312,7 +312,8 @@ export default function AppPreview() {
                         <div className="flex items-center gap-2 mb-1">
                           <span className="font-semibold text-sm text-gray-900">Sophie Martin</span>
                           <div className="flex gap-0.5">
-                            {[1,2,3,4,5].map(i => <span key={i} className="text-yellow-400 text-xs">★</span>)}
+                            {[1,2,3,4].map(i => <span key={i} className="text-yellow-400 text-xs">★</span>)}
+                            <span className="text-gray-200 text-xs">★</span>
                           </div>
                         </div>
                         <p className="text-sm text-gray-700">
