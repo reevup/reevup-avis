@@ -16,7 +16,7 @@ const item = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, trans
 export default function Stats() {
   const { theme } = useTheme();
   return (
-    <section className="py-16" style={{ background: theme === "dark" ? "linear-gradient(to bottom, #1a1a1a, #222222 30%)" : "linear-gradient(to bottom, #ffffff, #F9F7FC 30%)" }}>
+    <section className="py-16" style={{ background: theme === "dark" ? "#222222" : "#F9F7FC" }}>
       <div className="max-w-5xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}

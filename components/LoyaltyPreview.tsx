@@ -41,7 +41,7 @@ export default function LoyaltyPreview() {
   };
 
   return (
-    <section className="py-16" style={{ background: isDark ? "linear-gradient(to bottom, #1a1a1a, #222222 20%)" : "linear-gradient(to bottom, #ffffff, #F9F7FC 20%)" }}>
+    <section className="py-16" style={{ background: isDark ? "#222222" : "#F9F7FC" }}>
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 10 }}

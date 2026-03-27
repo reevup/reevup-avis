@@ -43,7 +43,7 @@ export default function HowItWorks() {
   const { theme } = useTheme();
 
   return (
-    <section className="py-16" style={{ background: theme === "dark" ? "linear-gradient(to bottom, #222222, #1e1525 25%)" : "linear-gradient(to bottom, #F9F7FC, #F3EAFA 25%)" }}>
+    <section className="py-16" style={{ background: theme === "dark" ? "#1e1525" : "#F3EAFA" }}>
       <div className="max-w-7xl mx-auto px-6">
         <motion.h2
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}

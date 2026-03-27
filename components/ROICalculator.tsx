@@ -19,7 +19,7 @@ export default function ROICalculator() {
   const sliderTrack = isDark ? "#3a3a3a" : "#E5E7EB";
 
   return (
-    <section className="py-16" style={{ background: isDark ? "linear-gradient(to bottom, #1e1525, #222222 20%)" : "linear-gradient(to bottom, #F3EEFA, #F9F7FC 20%)" }}>
+    <section className="py-16" style={{ background: isDark ? "#222222" : "#F9F7FC" }}>
       <div className="max-w-5xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
