@@ -138,10 +138,4 @@ input[type="range"]::-moz-range-thumb {
   }
 }
 
-/* Smooth transitions for theme switch */
-.dark nav,
-.dark section,
-.dark footer,
-.dark div {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-}
+/* Smooth transitions for theme switch — body only to avoid glitches */
