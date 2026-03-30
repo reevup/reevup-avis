@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 const logos = [
   {
     name: "Google Business",
@@ -53,17 +51,13 @@ export default function LogoBanner() {
   return (
     <section className="py-10 bg-white dark:bg-[#1a1a1a]">
       <div className="max-w-5xl mx-auto px-6">
-        <motion.p
-          initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
-          viewport={{ once: true }} transition={{ duration: 0.5 }}
-          className="text-center text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-6"
+        <p
+          className="reveal-fade text-center text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-6"
         >
           Compatible et intégré avec
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex flex-wrap items-center justify-center gap-5 sm:gap-8 md:gap-14"
+        </p>
+        <div
+          className="reveal flex flex-wrap items-center justify-center gap-5 sm:gap-8 md:gap-14"
         >
           {logos.map((l) => (
             <div key={l.name} className="flex items-center gap-2.5 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
@@ -71,7 +65,7 @@ export default function LogoBanner() {
               <span className="text-sm font-semibold text-gray-500 dark:text-gray-400">{l.name}</span>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

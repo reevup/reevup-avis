@@ -100,21 +100,11 @@ export default function Hero() {
         </div>
 
         {/* Floating stat cards - comble le vide */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="grid grid-cols-3 gap-4 mt-12 lg:mt-16 max-w-3xl mx-auto"
-        >
-          {floatingCards.map((card) => (
-            <motion.div
+        <div className="reveal grid grid-cols-3 gap-4 mt-12 lg:mt-16 max-w-3xl mx-auto">
+          {floatingCards.map((card, index) => (
+            <div
               key={card.label}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: card.delay }}
-              className="text-center p-4 sm:p-5 rounded-2xl border transition-all hover:-translate-y-1"
+              className={`reveal reveal-delay-${index + 1} text-center p-4 sm:p-5 rounded-2xl border transition-all hover:-translate-y-1`}
               style={{
                 background: isDark ? "#2a2a2a" : "#ffffff",
                 borderColor: isDark ? "#3a3a3a" : "#e9e2f5",
@@ -131,9 +121,9 @@ export default function Hero() {
                 {card.value}
               </p>
               <p className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400 font-medium">{card.label}</p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

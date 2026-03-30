@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { useTheme } from "./ThemeProvider";
 
 export default function ROICalculator() {
@@ -21,11 +20,7 @@ export default function ROICalculator() {
   return (
     <section className="py-16" style={{ background: isDark ? "#222222" : "#F9F7FC" }}>
       <div className="max-w-5xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.5 }}
-          className="text-center mb-14"
-        >
+        <div className="text-center mb-14 reveal">
           <span className="text-xs font-bold text-[#51197e] dark:text-[#c4b0e0] uppercase tracking-widest mb-4 block">Simulateur</span>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Calculez votre retour sur investissement
@@ -33,13 +28,9 @@ export default function ROICalculator() {
           <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
             Estimez l&apos;impact de Reevup&apos;Avis sur votre établissement en quelques secondes.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}
-          className="grid md:grid-cols-2 gap-8"
-        >
+        <div className="grid md:grid-cols-2 gap-8 reveal reveal-delay-1">
           {/* Inputs */}
           <div className="bg-white dark:bg-[#2a2a2a] rounded-2xl p-5 sm:p-8 shadow-lg border border-gray-100 dark:border-[#3a3a3a]">
             <h3 className="font-bold text-gray-900 dark:text-white text-lg mb-6">Votre situation actuelle</h3>
@@ -113,7 +104,7 @@ export default function ROICalculator() {
               <span className="group-hover:translate-x-1 transition-transform">→</span>
             </a>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

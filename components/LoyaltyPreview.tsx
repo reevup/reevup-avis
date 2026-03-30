@@ -43,40 +43,22 @@ export default function LoyaltyPreview() {
   return (
     <section className="py-16" style={{ background: isDark ? "#222222" : "#F9F7FC" }}>
       <div className="max-w-6xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex justify-center mb-6"
-        >
+        <div className="flex justify-center mb-6 reveal">
           <span
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold"
             style={{ background: isDark ? "#2a1d3a" : "#EDE5F7", color: isDark ? "#c4b0e0" : "#51197e" }}
           >
             🎁 Nouveau
           </span>
-        </motion.div>
+        </div>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-3 text-gray-900 dark:text-white"
-        >
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-3 text-gray-900 dark:text-white reveal">
           Fidélisez vos clients avec des récompenses
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-gray-500 dark:text-gray-400 text-center mb-14 text-lg max-w-2xl mx-auto"
-        >
+        </h2>
+        <p className="text-gray-500 dark:text-gray-400 text-center mb-14 text-lg max-w-2xl mx-auto reveal-fade reveal-delay-1">
           Option activable en un clic depuis votre dashboard. Offrez une roulette
           ou un bon de réduction après chaque avis, si vous le souhaitez.
-        </motion.p>
+        </p>
 
         {/* Tab switcher */}
         <div className="flex justify-center mb-10">
@@ -108,13 +90,7 @@ export default function LoyaltyPreview() {
 
         <div className="grid lg:grid-cols-2 gap-10 items-start">
           {/* Left: Interactive preview */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="bg-white dark:bg-[#2a2a2a] rounded-3xl shadow-xl border border-gray-100 dark:border-[#3a3a3a] p-8 md:p-10"
-          >
+          <div className="bg-white dark:bg-[#2a2a2a] rounded-3xl shadow-xl border border-gray-100 dark:border-[#3a3a3a] p-8 md:p-10 reveal-left">
             <div className="flex items-center gap-2 mb-6">
               <div className="w-3 h-3 rounded-full bg-red-400" />
               <div className="w-3 h-3 rounded-full bg-yellow-400" />
@@ -320,16 +296,10 @@ export default function LoyaltyPreview() {
                 </motion.div>
               )}
             </AnimatePresence>
-          </motion.div>
+          </div>
 
           {/* Right: Features & customization highlights */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="flex flex-col gap-6"
-          >
+          <div className="flex flex-col gap-6 reveal-right reveal-delay-1">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold w-fit" style={{ background: isDark ? "#2a1d3a" : "#EDE5F7", color: isDark ? "#c4b0e0" : "#51197e" }}>
               ⚙️ Option activable
             </div>
@@ -394,7 +364,7 @@ export default function LoyaltyPreview() {
               Essayer le système de fidélité
               <span className="group-hover:translate-x-1 transition-transform">→</span>
             </a>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

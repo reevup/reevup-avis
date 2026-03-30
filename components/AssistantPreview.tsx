@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 const assistants = [
   { name: "Hugo", active: true, color: "#3B82F6" },
   { name: "Yannick", active: false, color: "#8B5CF6" },
@@ -19,11 +17,7 @@ export default function AssistantPreview() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left - Mockup */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }} transition={{ duration: 0.6 }}
-            className="relative order-2 lg:order-1"
-          >
+          <div className="relative order-2 lg:order-1 reveal-left">
             <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden">
               {/* Browser bar */}
               <div className="bg-gray-50 border-b border-gray-200 px-4 py-3 flex items-center gap-2">
@@ -105,14 +99,10 @@ export default function AssistantPreview() {
               </div>
             </div>
             <div className="absolute -inset-4 -z-10 rounded-3xl" style={{ background: "linear-gradient(135deg, rgba(81,25,126,0.08), rgba(124,58,237,0.05))" }} />
-          </motion.div>
+          </div>
 
           {/* Right - Text */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }} transition={{ duration: 0.5 }}
-            className="order-1 lg:order-2"
-          >
+          <div className="order-1 lg:order-2 reveal-right">
             <span className="text-xs font-bold text-[#51197e] dark:text-[#c4b0e0] uppercase tracking-widest mb-4 block">Assistant IA</span>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-6">
               Un assistant qui répond{" "}
@@ -140,7 +130,7 @@ export default function AssistantPreview() {
               Configurer mon assistant
               <span className="group-hover:translate-x-1 transition-transform">→</span>
             </a>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

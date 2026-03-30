@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 const features = [
   {
     icon: (
@@ -45,41 +43,32 @@ const features = [
   },
 ];
 
-const container = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } };
-const item = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
-
 export default function Features() {
   return (
     <section id="fonctionnalites" className="py-16 bg-white dark:bg-[#1a1a1a]">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900 dark:text-white"
+        <h2
+          className="reveal text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900 dark:text-white"
         >
           Tout ce qu&apos;il vous faut
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
-          viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-gray-600 dark:text-gray-300 text-center mb-16 max-w-2xl mx-auto text-lg"
+        </h2>
+        <p
+          className="reveal-fade text-gray-600 dark:text-gray-300 text-center mb-16 max-w-2xl mx-auto text-lg"
         >
           Une solution complète pour gérer votre réputation en ligne sans effort.
-        </motion.p>
+        </p>
 
-        <motion.div variants={container} initial="hidden" whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }} className="grid md:grid-cols-2 gap-6"
-        >
+        <div className="stagger-container reveal-fade grid md:grid-cols-2 gap-6">
           {features.map((f) => (
-            <motion.div key={f.title} variants={item} className="glass-card p-8 md:p-10">
+            <div key={f.title} className="stagger-item glass-card p-8 md:p-10">
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-white mb-6" style={{ background: f.color }}>
                 {f.icon}
               </div>
               <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">{f.title}</h3>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{f.desc}</p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
