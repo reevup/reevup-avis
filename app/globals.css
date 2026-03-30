@@ -75,12 +75,12 @@ h1, h2, h3, h4 {
   border: 1px solid var(--glass-border);
   border-radius: 20px;
   box-shadow: 0 4px 24px var(--glass-shadow);
-  transition: all 0.3s ease;
+  transition: border-color 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s cubic-bezier(0.22,1,0.36,1), transform 0.5s cubic-bezier(0.22,1,0.36,1);
 }
 .glass-card:hover {
   border-color: var(--glass-border-hover);
   box-shadow: 0 8px 40px var(--glass-shadow-hover);
-  transform: translateY(-4px);
+  transform: translateY(-3px);
 }
 
 /* Scrollbar */
