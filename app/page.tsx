@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import LogoBanner from "@/components/LogoBanner";
@@ -18,28 +21,34 @@ import ScrollToTop from "@/components/ScrollToTop";
 import LoadingScreen from "@/components/LoadingScreen";
 
 export default function Home() {
+  const [ready, setReady] = useState(false);
+
   return (
     <>
-      <LoadingScreen />
-      <Navbar />
-      <ScrollToTop />
-      <main>
-        <Hero />
-        <LogoBanner />
-        <Stats />
-        <HowItWorks />
-        <Features />
-        <InteractiveDemo />
-        <Benefits />
-        <AppPreview />
-        <LoyaltyPreview />
-        <Comparison />
-        <ROICalculator />
-        <Pricing />
-        <FAQ />
-        <CTAFinal />
-      </main>
-      <Footer />
+      <LoadingScreen onComplete={() => setReady(true)} />
+      {ready && (
+        <>
+          <Navbar />
+          <ScrollToTop />
+          <main>
+            <Hero />
+            <LogoBanner />
+            <Stats />
+            <HowItWorks />
+            <Features />
+            <InteractiveDemo />
+            <Benefits />
+            <AppPreview />
+            <LoyaltyPreview />
+            <Comparison />
+            <ROICalculator />
+            <Pricing />
+            <FAQ />
+            <CTAFinal />
+          </main>
+          <Footer />
+        </>
+      )}
     </>
   );
 }
