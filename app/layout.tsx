@@ -371,9 +371,13 @@ export default function RootLayout({
             50% { opacity: 0.8; transform: translateY(-10px); }
           }
 
-          /* Hide page content during loading to prevent whileInView glitches */
+          /* Hide page content and prevent scroll during loading to prevent whileInView glitches */
+          body.loading {
+            overflow: hidden !important;
+            height: 100vh !important;
+          }
           body.loading > *:not(#__loading-screen) {
-            visibility: hidden;
+            display: none !important;
           }
         `}} />
       </head>
