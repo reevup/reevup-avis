@@ -22,7 +22,7 @@ export default function Footer() {
           {/* Links grid */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 flex-1">
             <div>
-              <h4 className="text-xs font-bold text-white mb-4 uppercase tracking-wider">Produit</h4>
+              <h4 className="text-xs font-bold text-white mb-4 uppercase tracking-wider">Navigation</h4>
               <ul className="flex flex-col gap-2.5">
                 <li><a href="#fonctionnalites" className="text-sm text-gray-400 hover:text-white transition-colors">Fonctionnalités</a></li>
                 <li><a href="#tarifs" className="text-sm text-gray-400 hover:text-white transition-colors">Tarifs</a></li>
