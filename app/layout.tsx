@@ -167,6 +167,7 @@ export default function RootLayout({
             } catch(e) {}
             if (history.scrollRestoration) { history.scrollRestoration = 'manual'; }
             window.scrollTo(0, 0);
+            document.body.classList.add('loading');
           })();
         `}} />
         <style dangerouslySetInnerHTML={{ __html: `
@@ -368,6 +369,11 @@ export default function RootLayout({
           @keyframes __dotFloat {
             0%, 100% { opacity: 0.3; transform: translateY(0); }
             50% { opacity: 0.8; transform: translateY(-10px); }
+          }
+
+          /* Hide page content during loading to prevent whileInView glitches */
+          body.loading > *:not(#__loading-screen) {
+            visibility: hidden;
           }
         `}} />
       </head>
