@@ -10,6 +10,7 @@ export default function LoadingScreen() {
     // Wait for bar animation to finish (1.3s anim + 0.55s delay = ~1.85s), then fade out
     const timer = setTimeout(() => {
       el.classList.add("fade-out");
+      document.body.classList.remove("loading");
       setTimeout(() => el.remove(), 600);
     }, 1900);
 
