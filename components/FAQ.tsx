@@ -41,20 +41,12 @@ export default function FAQ() {
   return (
     <section id="faq" className="py-16 bg-white dark:bg-[#1a1a1a]">
       <div className="max-w-3xl mx-auto px-6">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-14 text-gray-900 dark:text-white"
-        >
+        <h2 className="reveal text-3xl md:text-4xl font-bold text-center mb-14 text-gray-900 dark:text-white">
           Questions fréquentes
-        </motion.h2>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
-          className="bg-white dark:bg-[#2a2a2a] rounded-2xl border border-gray-100 dark:border-[#3a3a3a] shadow-lg p-6 md:p-10"
-        >
+        </h2>
+        <div className="reveal bg-white dark:bg-[#2a2a2a] rounded-2xl border border-gray-100 dark:border-[#3a3a3a] shadow-lg p-6 md:p-10">
           {faqs.map((faq) => <FAQItem key={faq.q} faq={faq} />)}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

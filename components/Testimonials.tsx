@@ -41,27 +41,15 @@ export default function Testimonials() {
   return (
     <section className="py-24" style={{ background: "#F3EAFA" }}>
       <div className="max-w-4xl mx-auto px-6">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900"
-        >
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900 reveal">
           Voyez Reevup&apos;Avis en action
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
-          viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-gray-600 text-center mb-12 text-lg"
-        >
+        </h2>
+        <p className="text-gray-600 text-center mb-12 text-lg reveal-fade reveal-delay-1">
           Simulez un scénario réel pour comprendre comment ça marche.
-        </motion.p>
+        </p>
 
         {/* Tabs */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.15 }}
-          className="flex justify-center gap-2 sm:gap-3 mb-10"
-        >
+        <div className="flex justify-center gap-2 sm:gap-3 mb-10 reveal reveal-delay-2">
           {scenarios.map((s, i) => (
             <button
               key={s.id}
@@ -75,7 +63,7 @@ export default function Testimonials() {
               <span className="mr-2">{s.emoji}</span>{s.tab}
             </button>
           ))}
-        </motion.div>
+        </div>
 
         {/* Scenario Card */}
         <AnimatePresence mode="wait">
@@ -146,16 +134,12 @@ export default function Testimonials() {
         </AnimatePresence>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-center mt-10"
-        >
+        <div className="text-center mt-10 reveal reveal-delay-3">
           <a href="#tarifs" className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#51197e] text-white font-bold hover:bg-[#6B21A8] transition-all shadow-xl shadow-[#51197e]/20 group">
             Essayer avec mon établissement
             <span className="group-hover:translate-x-1 transition-transform">→</span>
           </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

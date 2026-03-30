@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 const guarantees = [
   {
     icon: (
@@ -41,36 +39,21 @@ const guarantees = [
   },
 ];
 
-const container = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } };
-const item = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
-
 export default function Guarantees() {
   return (
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900"
-        >
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900 reveal">
           Zéro risque, zéro surprise
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
-          viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-gray-600 text-center mb-14 max-w-2xl mx-auto text-lg"
-        >
+        </h2>
+        <p className="text-gray-600 text-center mb-14 max-w-2xl mx-auto text-lg reveal-fade reveal-delay-1">
           On croit en notre produit. C&apos;est pour ça qu&apos;on ne vous demande rien pour l&apos;essayer.
-        </motion.p>
+        </p>
 
-        <motion.div
-          variants={container} initial="hidden" whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {guarantees.map((g) => (
-            <motion.div key={g.title} variants={item}
-              className="text-center p-8 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group"
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-container reveal-fade">
+          {guarantees.map((g, i) => (
+            <div key={g.title}
+              className={`text-center p-8 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group stagger-item reveal-delay-${i + 1}`}
             >
               <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-[#51197e] dark:text-[#c4b0e0] mx-auto mb-5 transition-colors group-hover:text-white group-hover:bg-[#51197e]"
                 style={{ background: "#EDE5F7" }}>
@@ -78,9 +61,9 @@ export default function Guarantees() {
               </div>
               <h3 className="text-lg font-bold mb-2 text-gray-900">{g.title}</h3>
               <p className="text-sm text-gray-600 leading-relaxed">{g.desc}</p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

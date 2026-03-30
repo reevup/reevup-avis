@@ -18,6 +18,7 @@ import FAQ from "@/components/FAQ";
 import CTAFinal from "@/components/CTAFinal";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import ScrollRevealInit from "@/components/ScrollRevealInit";
 import LoadingScreen from "@/components/LoadingScreen";
 
 export default function Home() {
@@ -30,6 +31,7 @@ export default function Home() {
         <>
           <Navbar />
           <ScrollToTop />
+          <ScrollRevealInit />
           <main>
             <Hero />
             <LogoBanner />

@@ -28,11 +28,7 @@ export default function InteractiveDemo() {
   return (
     <section id="simulation" className="py-16 bg-white dark:bg-[#1a1a1a]">
       <div className="max-w-4xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.5 }}
-          className="text-center mb-4"
-        >
+        <div className="reveal text-center mb-4">
           <span className="text-xs font-bold text-[#51197e] dark:text-[#c4b0e0] uppercase tracking-widest mb-4 block">Démo interactive</span>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Testez par vous-même
@@ -40,14 +36,10 @@ export default function InteractiveDemo() {
           <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
             Imaginez qu&apos;un client vient de manger dans votre restaurant. Quelle note donnerait-il ?
           </p>
-        </motion.div>
+        </div>
 
         {/* Star selector */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.15 }}
-          className="flex flex-col items-center gap-4 my-12"
-        >
+        <div className="reveal flex flex-col items-center gap-4 my-12">
           <p className="text-sm font-semibold text-gray-500 dark:text-gray-400">Cliquez sur une note :</p>
           <div className="flex gap-2">
             {[1, 2, 3, 4, 5].map((i) => (
@@ -76,7 +68,7 @@ export default function InteractiveDemo() {
               {isPositive ? "Client satisfait !" : "Client mécontent..."}
             </motion.p>
           )}
-        </motion.div>
+        </div>
 
         {/* Result */}
         <AnimatePresence mode="wait">
@@ -161,13 +153,9 @@ export default function InteractiveDemo() {
 
         {/* Empty state */}
         {stars === 0 && (
-          <motion.div
-            initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
-            viewport={{ once: true }} transition={{ delay: 0.3 }}
-            className="text-center py-16 rounded-2xl border-2 border-dashed border-gray-200 dark:border-[#3a3a3a]"
-          >
+          <div className="reveal-fade text-center py-16 rounded-2xl border-2 border-dashed border-gray-200 dark:border-[#3a3a3a]">
             <p className="text-gray-400 dark:text-gray-500 text-lg">👆 Cliquez sur une étoile pour lancer la simulation</p>
-          </motion.div>
+          </div>
         )}
       </div>
     </section>

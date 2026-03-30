@@ -67,11 +67,7 @@ export default function AppPreview() {
   return (
     <section className="py-16 pb-20 bg-white dark:bg-[#1a1a1a]">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.5 }}
-          className="text-center mb-10"
-        >
+        <div className="text-center mb-10 reveal">
           <span className="text-xs font-bold text-[#51197e] dark:text-[#c4b0e0] uppercase tracking-widest mb-4 block">Aperçu de l&apos;application</span>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Tout se gère depuis votre dashboard
@@ -96,7 +92,7 @@ export default function AppPreview() {
               🤖 Assistant IA
             </button>
           </div>
-        </motion.div>
+        </div>
 
         <AnimatePresence mode="wait">
           {tab === "dashboard" ? (

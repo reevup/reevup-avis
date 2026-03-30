@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { useTheme } from "./ThemeProvider";
 
 const plans = [
@@ -48,9 +47,6 @@ const plans = [
   },
 ];
 
-const container = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } };
-const item = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
-
 const VISIBLE_COUNT = 4;
 
 function PlanCard({ p, annual }: { p: typeof plans[0]; annual: boolean }) {
@@ -61,8 +57,8 @@ function PlanCard({ p, annual }: { p: typeof plans[0]; annual: boolean }) {
   const hasMore = p.features.length > VISIBLE_COUNT;
 
   return (
-    <motion.div variants={item}
-      className={`rounded-2xl p-6 sm:p-8 flex flex-col relative border-2 ${
+    <div
+      className={`stagger-item rounded-2xl p-6 sm:p-8 flex flex-col relative border-2 ${
         p.popular ? "border-[#51197e] shadow-xl shadow-[#51197e]/10" : "border-gray-100 dark:border-[#3a3a3a] shadow-sm hover:shadow-lg"
       }`}
       style={{ background: isDark ? "#2a2a2a" : "#ffffff" }}
@@ -136,7 +132,7 @@ function PlanCard({ p, annual }: { p: typeof plans[0]; annual: boolean }) {
         {p.cta}
         <span className="group-hover:translate-x-1 transition-transform">→</span>
       </a>
-    </motion.div>
+    </div>
   );
 }
 
@@ -148,20 +144,16 @@ export default function Pricing() {
   return (
     <section id="tarifs" className="py-16 bg-white dark:bg-[#1a1a1a]">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900 dark:text-white"
+        <h2
+          className="reveal text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900 dark:text-white"
         >
           Des tarifs simples et transparents
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
-          viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-gray-600 dark:text-gray-300 text-center mb-10 text-lg"
+        </h2>
+        <p
+          className="reveal-fade text-gray-600 dark:text-gray-300 text-center mb-10 text-lg"
         >
           14 jours d&apos;essai gratuit, annulez à tout moment.
-        </motion.p>
+        </p>
 
         <div className="flex items-center justify-center gap-4 mb-14">
           <span className={`text-sm font-semibold ${!annual ? "text-gray-900 dark:text-white" : "text-gray-400 dark:text-gray-500"}`}>Mensuel</span>
@@ -176,19 +168,15 @@ export default function Pricing() {
           </span>
         </div>
 
-        <motion.div variants={container} initial="hidden" whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }} className="grid sm:grid-cols-2 items-start gap-5 sm:gap-6 lg:gap-8 max-w-4xl mx-auto"
-        >
+        <div className="stagger-container reveal-fade grid sm:grid-cols-2 items-start gap-5 sm:gap-6 lg:gap-8 max-w-4xl mx-auto">
           {plans.map((p) => (
             <PlanCard key={p.name} p={p} annual={annual} />
           ))}
-        </motion.div>
+        </div>
 
         {/* Pack fidélité option */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}
-          className="max-w-2xl mx-auto mt-10"
+        <div
+          className="reveal max-w-2xl mx-auto mt-10"
         >
           <div className="flex flex-col sm:flex-row items-center gap-4 p-5 sm:p-6 rounded-2xl border-2 border-dashed border-[#51197e]/30 dark:border-[#51197e]/20 dark:border-[#9371d1]/30 bg-[#F9F7FC] dark:bg-[#222222]">
             <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: isDark ? "#2a1d3a" : "#EDE5F7" }}>
@@ -206,25 +194,21 @@ export default function Pricing() {
               <span className="text-gray-500 dark:text-gray-400 text-xs font-medium">/mois</span>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Trust line */}
-        <motion.div
-          initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
-          viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-wrap items-center justify-center gap-6 mt-10 text-sm text-gray-500 dark:text-gray-400"
+        <div
+          className="reveal-fade flex flex-wrap items-center justify-center gap-6 mt-10 text-sm text-gray-500 dark:text-gray-400"
         >
           <span className="flex items-center gap-1.5">🔒 Paiement sécurisé Stripe</span>
           <span className="flex items-center gap-1.5">⚡ Activation en 3 min</span>
           <span className="flex items-center gap-1.5">🔄 Résiliable en 1 clic</span>
           <span className="flex items-center gap-1.5">📞 Support réactif</span>
-        </motion.div>
+        </div>
 
         {/* Guarantees */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.4 }}
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-14"
+        <div
+          className="reveal grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-14"
         >
           {[
             { icon: "🛡️", title: "100% conforme RGPD", desc: "Données hébergées en France. Vous restez propriétaire de tout." },
@@ -238,7 +222,7 @@ export default function Pricing() {
               <p className="text-xs text-gray-500 dark:text-gray-400">{g.desc}</p>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useTheme } from "./ThemeProvider";
 
 const benefits = [
@@ -54,9 +53,6 @@ const benefits = [
   },
 ];
 
-const container = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } };
-const item = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
-
 export default function Benefits() {
   const { theme } = useTheme();
 
@@ -65,10 +61,7 @@ export default function Benefits() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-16 items-center">
           {/* Left */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }} transition={{ duration: 0.5 }}
-          >
+          <div className="reveal-left">
             <span className="text-xs font-bold text-[#51197e] dark:text-[#c4b0e0] uppercase tracking-widest mb-4 block">Bénéfices</span>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight mb-8">
               Un investissement{" "}
@@ -83,16 +76,13 @@ export default function Benefits() {
                 Demander une démo
               </a>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right - Grid */}
-          <motion.div variants={container} initial="hidden" whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            className="grid sm:grid-cols-2 gap-5"
-          >
+          <div className="stagger-container reveal-fade grid sm:grid-cols-2 gap-5">
             {benefits.map((b) => (
-              <motion.div key={b.title} variants={item}
-                className="bg-white dark:bg-[#2a2a2a] rounded-2xl p-7 shadow-sm border border-gray-100 dark:border-[#3a3a3a] hover:shadow-lg hover:-translate-y-1 transition-all"
+              <div key={b.title}
+                className="stagger-item bg-white dark:bg-[#2a2a2a] rounded-2xl p-7 shadow-sm border border-gray-100 dark:border-[#3a3a3a] hover:shadow-lg hover:-translate-y-1 transition-all"
               >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
                   style={{ background: theme === "dark" ? b.darkColor : b.color, color: b.iconColor }}>
@@ -100,9 +90,9 @@ export default function Benefits() {
                 </div>
                 <h3 className="font-bold text-gray-900 dark:text-white mb-2">{b.title}</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{b.desc}</p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

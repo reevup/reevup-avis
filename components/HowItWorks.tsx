@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useTheme } from "./ThemeProvider";
 
 const steps = [
@@ -36,35 +35,26 @@ const steps = [
   },
 ];
 
-const container = { hidden: {}, visible: { transition: { staggerChildren: 0.15 } } };
-const item = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
-
 export default function HowItWorks() {
   const { theme } = useTheme();
 
   return (
     <section className="py-16" style={{ background: theme === "dark" ? "#1e1525" : "#F3EAFA" }}>
       <div className="max-w-7xl mx-auto px-6">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900 dark:text-white"
+        <h2
+          className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900 dark:text-white reveal"
         >
           En 3 minutes, c&apos;est en place
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
-          viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-gray-600 dark:text-gray-300 text-center mb-16 text-lg"
+        </h2>
+        <p
+          className="text-gray-600 dark:text-gray-300 text-center mb-16 text-lg reveal-fade reveal-delay-1"
         >
           Simple comme bonjour.
-        </motion.p>
+        </p>
 
-        <motion.div variants={container} initial="hidden" whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }} className="grid md:grid-cols-3 gap-8"
-        >
+        <div className="grid md:grid-cols-3 gap-8 stagger-container reveal-fade">
           {steps.map((s) => (
-            <motion.div key={s.num} variants={item} className="relative p-8 bg-white dark:bg-[#2a2a2a] rounded-2xl shadow-sm border border-white dark:border-[#3a3a3a] hover:shadow-lg transition-all">
+            <div key={s.num} className="relative p-8 bg-white dark:bg-[#2a2a2a] rounded-2xl shadow-sm border border-white dark:border-[#3a3a3a] hover:shadow-lg transition-all stagger-item">
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-white mb-6" style={{ background: "#51197e" }}>
                 {s.icon}
               </div>
@@ -73,9 +63,9 @@ export default function HowItWorks() {
               </span>
               <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">{s.title}</h3>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{s.desc}</p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

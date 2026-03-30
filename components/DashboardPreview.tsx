@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 function StarRating({ rating }: { rating: number }) {
   return (
     <div className="flex gap-0.5">
@@ -16,11 +14,7 @@ export default function DashboardPreview() {
   return (
     <section className="py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.5 }}
-          className="text-center mb-14"
-        >
+        <div className="text-center mb-14 reveal">
           <span className="text-xs font-bold text-[#51197e] dark:text-[#c4b0e0] uppercase tracking-widest mb-4 block">Tableau de bord</span>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Suivez vos résultats en temps réel
@@ -28,14 +22,10 @@ export default function DashboardPreview() {
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             Un dashboard complet pour piloter votre réputation en ligne. Note moyenne, évolution, avis récents : tout est là.
           </p>
-        </motion.div>
+        </div>
 
         {/* Dashboard Mockup */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }}
-          className="relative"
-        >
+        <div className="relative reveal reveal-delay-1">
           <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden max-w-5xl mx-auto">
             {/* Browser bar */}
             <div className="bg-gray-50 border-b border-gray-200 px-4 py-3 flex items-center gap-2">
@@ -170,7 +160,7 @@ export default function DashboardPreview() {
 
           {/* Decorative gradient behind */}
           <div className="absolute -inset-4 -z-10 rounded-3xl" style={{ background: "linear-gradient(135deg, rgba(81,25,126,0.08), rgba(124,58,237,0.05))" }} />
-        </motion.div>
+        </div>
       </div>
     </section>
   );
