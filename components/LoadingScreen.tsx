@@ -2,25 +2,28 @@
 
 import { useEffect } from "react";
 
-export default function LoadingScreen() {
+export default function LoadingScreen({ onComplete }: { onComplete?: () => void }) {
   useEffect(() => {
     const el = document.getElementById("__loading-screen");
-    if (!el) return;
+    if (!el) {
+      onComplete?.();
+      return;
+    }
 
-    // Wait for bar animation to finish (1.3s anim + 0.55s delay = ~1.85s), then fade out
     const timer = setTimeout(() => {
       el.classList.add("fade-out");
-      // First scroll to top, then reveal content, then remove loading screen
       window.scrollTo(0, 0);
-      document.body.classList.remove("loading");
+      // Reveal content slightly before the fade finishes so it feels seamless
+      setTimeout(() => {
+        onComplete?.();
+      }, 100);
       setTimeout(() => {
         el.remove();
-        window.scrollTo(0, 0);
       }, 600);
     }, 1900);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [onComplete]);
 
   return null;
 }
