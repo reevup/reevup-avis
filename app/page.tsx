@@ -10,7 +10,9 @@ import Features from "@/components/Features";
 import InteractiveDemo from "@/components/InteractiveDemo";
 import Benefits from "@/components/Benefits";
 import AppPreview from "@/components/AppPreview";
+import CompetitiveWatch from "@/components/CompetitiveWatch";
 import LoyaltyPreview from "@/components/LoyaltyPreview";
+import Campaigns from "@/components/Campaigns";
 import Comparison from "@/components/Comparison";
 import ROICalculator from "@/components/ROICalculator";
 import Pricing from "@/components/Pricing";
@@ -41,7 +43,9 @@ export default function Home() {
             <InteractiveDemo />
             <Benefits />
             <AppPreview />
+            <CompetitiveWatch />
             <LoyaltyPreview />
+            <Campaigns />
             <Comparison />
             <ROICalculator />
             <Pricing />
