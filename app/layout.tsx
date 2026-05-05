@@ -5,7 +5,7 @@ import ThemeProvider from "@/components/ThemeProvider";
 export const metadata: Metadata = {
   title: "Reevup'Avis | Boostez vos avis Google automatiquement",
   description:
-    "Reevup'Avis redirige vos clients satisfaits vers Google, intercepte les avis négatifs et répond automatiquement via IA. Essai gratuit 14 jours.",
+    "Reevup'Avis automatise vos avis Google : redirection des clients satisfaits, IA qui répond pour vous, jeux interactifs (roue, cadeau mystère, machine à sous), campagnes email/SMS et veille concurrentielle. Essai gratuit 14 jours.",
   keywords: [
     "avis Google",
     "gestion avis Google",
@@ -16,6 +16,13 @@ export const metadata: Metadata = {
     "e-réputation restaurant",
     "collecte avis clients",
     "avis Google automatique",
+    "veille concurrentielle Google",
+    "campagne email restaurant",
+    "campagne SMS commerce",
+    "jeu fidélisation client",
+    "roue de la fortune avis",
+    "machine à sous fidélité",
+    "cadeau mystère client",
     "Reevup",
   ],
   openGraph: {
@@ -133,6 +140,30 @@ const jsonLd = [
         acceptedAnswer: {
           "@type": "Answer",
           text: "Non, le mode kiosque fonctionne sur n'importe quelle tablette ou smartphone. Il suffit d'ouvrir le lien dans un navigateur. Pas d'application à installer.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Comment fonctionne l'analyse concurrentielle de Reevup'Avis ?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Vous renseignez l'adresse de votre établissement et son secteur. Reevup'Avis identifie automatiquement vos concurrents locaux sur Google, compare leurs notes et nombre d'avis, et calcule combien d'avis 5 étoiles il vous faut pour les dépasser, avec une estimation de durée.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Quels jeux interactifs sont disponibles pour fidéliser mes clients ?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Trois jeux interactifs : la roue de la fortune, le cadeau mystère et la machine à sous. Chaque jeu se déclenche après une action choisie par le client (avis Google, email, follow Instagram) et permet de gagner des récompenses 100% personnalisables. Mode 100% gagnant activable en un clic.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Puis-je envoyer des campagnes email et SMS à mes clients ?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Oui. Reevup'Avis collecte automatiquement les emails et téléphones de vos clients via les formulaires d'avis, puis vous permet d'envoyer des campagnes ciblées : remerciement post-visite, promotion saisonnière, anniversaire client, relance des inactifs. Système de crédits prépayés, statistiques en temps réel.",
         },
       },
     ],
